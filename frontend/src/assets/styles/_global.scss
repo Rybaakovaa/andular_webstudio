@@ -1,0 +1,29 @@
+@import "variables";
+
+html, body {
+  margin: 0;
+  padding: 0;
+
+  background-color: #FFFFFF;
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+}
+
+
+.button {
+  background: #709fdc;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  border: 0;
+}
