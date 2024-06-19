@@ -1,1 +1,23 @@
-<p>login works!</p>
+<section class="login">
+  <div class="container">
+    <div class="auth-form">
+      <div class="form-title">Войти в личный кабинет</div>
+      <div class="form-body">
+        <input class="input" type="text" placeholder="Электронная почта">
+        <input class="input" type="text" placeholder="Пароль">
+        <div class="rememberMe">
+          <input id="checkbox" type="checkbox">
+          <label for="checkbox">Запомнить меня</label>
+        </div>
+      </div>
+      <div class="form-after">
+        <button class="button">Войти</button>
+        <span>Нет аккаунта? <a routerLink="/signup">Пройдите регистрацию</a></span>
+      </div>
+    </div>
+
+    <div class="page-image">
+      <img src="assets/images/pages/login.png" alt="picture">
+    </div>
+  </div>
+</section>

@@ -1,0 +1,70 @@
+@import "../../../../assets/styles/variables";
+
+.login {
+  padding: 106px 0 92px 0;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      .form-title {
+        font-family: "Lora", sans-serif;
+        font-weight: 400;
+        font-size: 36px;
+        color: $text-color-blue;
+      }
+
+      .form-body {
+        width: 422px;
+
+        .input {
+          width: 422px;
+          margin-bottom: 5px;
+        }
+
+        .rememberMe {
+          margin-top: 5px;
+          display: flex;
+          align-items: baseline;
+
+          label {
+            margin-left: 4px;
+            line-height: 130%;
+            color: $text-color-dark-blue;
+
+            a {
+              text-decoration: underline;
+              color: $text-color-blue;
+            }
+          }
+        }
+      }
+
+      .form-after {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .button {
+          width: 422px;
+        }
+
+        a {
+          text-decoration: none;
+          color: $text-color-blue;
+        }
+      }
+    }
+
+    .page-image {
+      margin-right: 26px;
+    }
+
+  }
+}
