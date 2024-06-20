@@ -1,0 +1,136 @@
+@import "../../../assets/styles/variables";
+
+
+.services {
+  padding: 60px 0;
+
+  .container {
+    .services-title {
+      margin-bottom: 40px;
+      font-family: 'Lora', sans-serif;
+      font-weight: 400;
+      font-size: 38px;
+      color: $text-color-blue;
+    }
+
+    .services-list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+
+      .service {
+        display: flex;
+        flex-direction: column;
+        width: 290px;
+        height: 498px;
+        font-family: 'Montserrat', sans-serif;
+
+        .service-image {
+          border-radius: 5px;
+          width: 291px;
+          height: 291px;
+          margin-bottom: 5px;
+        }
+
+        .service-title {
+          font-weight: 500;
+          font-size: 20px;
+          color: $text-color-blue;
+          margin-bottom: 10px;
+        }
+
+        .service-description {
+          font-size: 14px;
+          line-height: 130%;
+          color: $text-color-dark-blue;
+          margin-bottom: 33px;
+        }
+
+        .service-info {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .service-info-price {
+            font-weight: 600;
+            font-size: 20px;
+            color: $text-color-dark-blue;
+          }
+
+          .button {
+            width: 163px;
+            height: 51px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.about {
+  padding: 60px 0;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .about-image {
+      border-radius: 5px;
+      width: 460px;
+      height: 453px;
+    }
+
+    .about-content {
+      width: 712px;
+
+      .about-content-title {
+        font-family: 'Lora', sans-serif;
+        font-weight: 400;
+        font-size: 38px;
+        color: $text-color-blue;
+        margin-bottom: 20px;
+      }
+
+      .about-content-description {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        color: $text-color-dark-purple;
+        margin-bottom: 40px;
+
+        span {
+          font-weight: 500;
+        }
+      }
+
+      .about-content-advantages {
+        .advantages-title {
+          font-family: 'Lora', sans-serif;
+          font-weight: 400;
+          font-size: 26px;
+          color: $text-color-blue;
+          margin-bottom: 20px;
+        }
+
+        .advantages-list {
+          display: flex;
+          flex-wrap: wrap;
+          column-gap: 71px;
+          row-gap: 20px;
+
+          .advantages-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 20px;
+          }
+        }
+
+      }
+    }
+  }
+}
