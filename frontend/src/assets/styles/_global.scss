@@ -28,6 +28,12 @@ html, body {
   text-align: center;
   border: 0;
   box-sizing: border-box;
+  cursor: pointer;
+
+  &:disabled {
+    background: grey;
+    cursor: not-allowed;
+  }
 }
 
 .input {

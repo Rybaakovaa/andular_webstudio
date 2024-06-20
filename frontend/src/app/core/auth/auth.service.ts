@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {AuthResponseType} from "../../../types/auth-response.type";
 import {DefaultResponseType} from "../../../types/default-response.type";
+import {AuthResponseGetNameType} from "../../../types/auth-response-get-name.type";
 
 @Injectable({
   providedIn: 'root'
@@ -13,23 +14,24 @@ export class AuthService {
   public accessTokenKey = "accessToken";
   public refreshTokenKey = 'refreshToken';
   public userIdKey = 'userId';
+  public nameKey = 'name';
+  public emailKey = 'email';
 
   public isLogged$: Subject<boolean> = new Subject<boolean>(); // оповещение для слушателей
   private isLogged: boolean = false; // текущщее состояние
+  public userName$: Subject<string> = new Subject<string>();
 
   constructor(private http: HttpClient) {
     this.isLogged = !!localStorage.getItem(this.accessTokenKey);
   }
 
-  login(email: string, password: string, rememberMe: boolean):
-    Observable<DefaultResponseType | AuthResponseType> {
+  login(email: string, password: string, rememberMe: boolean): Observable<DefaultResponseType | AuthResponseType> {
     return this.http.post<DefaultResponseType | AuthResponseType>(environment.api + 'login', {
       email, password, rememberMe
     })
   }
 
-  signup(name: string, email: string, password: string):
-    Observable<DefaultResponseType | AuthResponseType> {
+  signup(name: string, email: string, password: string): Observable<DefaultResponseType | AuthResponseType> {
     return this.http.post<DefaultResponseType | AuthResponseType>(environment.api + 'signup', {
       name, email, password
     })
@@ -90,5 +92,23 @@ export class AuthService {
     } else {
       localStorage.removeItem(this.userIdKey);
     }
+  }
+
+
+
+  getUserInfo(): Observable<DefaultResponseType | AuthResponseGetNameType> {
+    return this.http.get<DefaultResponseType | AuthResponseGetNameType>(environment.api + 'users', {withCredentials: true})
+  }
+
+  public setUserInfo(name: string, email: string): void {
+    localStorage.setItem(this.nameKey, name);
+    localStorage.setItem(this.emailKey, email);
+    this.userName$.next(name);
+  }
+
+  public removeUserInfo(): void {
+    localStorage.removeItem(this.nameKey);
+    localStorage.removeItem(this.emailKey);
+    this.userName$.next('');
   }
 }

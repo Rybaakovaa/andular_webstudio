@@ -1,17 +1,25 @@
 <section class="login">
   <div class="container">
-    <div class="auth-form">
+    <div class="auth-form" [formGroup]="loginForm">
       <div class="form-title">Войти в личный кабинет</div>
       <div class="form-body">
-        <input class="input" type="text" placeholder="Электронная почта">
-        <input class="input" type="text" placeholder="Пароль">
+        <input class="input" type="text" placeholder="Электронная почта"
+               [ngStyle]="{'border-color': loginForm.get('email')?.invalid &&
+                 (loginForm.get('email')?.dirty && loginForm.get('email')?.touched) ?
+                 'red' : ''}"
+               formControlName="email">
+        <input class="input" type="text" placeholder="Пароль"
+               [ngStyle]="{'border-color': loginForm.get('password')?.invalid &&
+                 (loginForm.get('password')?.dirty && loginForm.get('password')?.touched) ?
+                 'red' : ''}"
+               formControlName="password">
         <div class="rememberMe">
-          <input id="checkbox" type="checkbox">
-          <label for="checkbox">Запомнить меня</label>
+          <input id="rememberMe" type="checkbox" formControlName="rememberMe">
+          <label for="rememberMe">Запомнить меня</label>
         </div>
       </div>
       <div class="form-after">
-        <button class="button">Войти</button>
+        <button class="button" [disabled]="loginForm.invalid" (click)="login()">Войти</button>
         <span>Нет аккаунта? <a routerLink="/signup">Пройдите регистрацию</a></span>
       </div>
     </div>

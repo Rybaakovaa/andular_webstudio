@@ -9,6 +9,11 @@ import {FooterComponent} from "./shared/layout/footer/footer.component";
 import {SharedModule} from "./shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
 import { MainComponent } from './views/main/main.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatMenuModule} from "@angular/material/menu";
+
 
 @NgModule({
   declarations: [
@@ -23,7 +28,11 @@ import { MainComponent } from './views/main/main.component';
     BrowserModule,
     HttpClientModule,
     SharedModule,
-    AppRoutingModule
+    MatSnackBarModule,
+    MatMenuModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
