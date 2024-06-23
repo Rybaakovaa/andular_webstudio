@@ -1,0 +1,10 @@
+<div class="banner-item">
+  <div class="banner-bg"></div>
+  <div class="banner-image">
+    <img src="{{imagePath + banner.image}}" alt="image">
+  </div>
+  <div class="banner-type">{{banner.type}}</div>
+  <div class="banner-title" [innerHTML]="getSanitizedHtml(banner.title)"></div>
+  <div class="banner-text" *ngIf="banner.text.length > 0">{{banner.text}}</div>
+  <button class="button">Подробнее</button>
+</div>

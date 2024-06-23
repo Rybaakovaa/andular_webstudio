@@ -1,0 +1,73 @@
+@import "../../../../assets/styles/variables";
+
+.banner-item {
+  padding-left: 80px;
+  width: $container-width;
+  height: 500px;
+  box-sizing: border-box;
+
+  font-family: "Montserrat", sans-serif;
+  color: #FFFFFF;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  .banner-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 703px;
+    height: 703px;
+    background-color: $color-light-blue;
+    border-radius: 703px 0 0 0; /* Радиус скругления (половина ширины и высоты для четверти круга) */
+    transform: rotate(180deg);
+  }
+
+  .banner-image {
+    width: 750px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  .banner-type {
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: $color-blue;
+    z-index: 1;
+  }
+
+  .banner-title {
+    font-family: "Lora", sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 130%;
+    z-index: 1;
+
+    span {
+      color: $color-blue;
+    }
+  }
+
+  .banner-text {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 456px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 130%;
+    z-index: 1;
+  }
+
+  .button {
+    margin-top: 40px;
+    width: 163px;
+    z-index: 1;
+  }
+}

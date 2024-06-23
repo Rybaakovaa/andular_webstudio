@@ -1,6 +1,18 @@
 @import "../../../assets/styles/variables";
 @import "../../../assets/styles/mixins";
 
+
+.mode-backward {
+  position: absolute;
+  top: calc(50% - 14px);
+}
+.mode-forward {
+  position: absolute;
+  top: calc(50% - 14px);
+}
+
+
+
 .banner {
   padding-bottom: 60px;
 
@@ -10,15 +22,10 @@
     height: 500px;
 
     .mode-backward {
-      position: absolute;
-      top: calc(50% - 14px);
       left: 11px;
       z-index: 3;
     }
-
     .mode-forward {
-      position: absolute;
-      top: calc(50% - 14px);
       right: 11px;
       z-index: 3;
     }
@@ -229,8 +236,14 @@
   .container {
     .carousel {
       margin-top: 20px;
-      display: flex;
-      gap: 25px;
+      position: relative;
+
+      .mode-backward {
+        left: calc(-15px - 18px);
+      }
+      .mode-forward {
+        right: calc(-15px - 18px);
+      }
 
       .review-item {
         font-family: 'Montserrat', sans-serif;

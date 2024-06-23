@@ -35,28 +35,19 @@ export class MainComponent implements OnInit {
     },
   ]
 
-  customOptions: OwlOptions = {
+  customOptionsBanners: OwlOptions = {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
-    margin: 24,
-    dots: false,
+    dots: true,
     navSpeed: 700,
     navText: ['', ''],
     responsive: {
       0: {
-        items: 1
+        items: 1,
+        dotsEach: true
       },
-      // 400: {
-      //   items: 2
-      // },
-      // 740: {
-      //   items: 3
-      // },
-      // 940: {
-      //   items: 4
-      // }
     },
     nav: false
   }
@@ -107,8 +98,31 @@ export class MainComponent implements OnInit {
       name: "Мария",
       image: "review-3.png",
       text: "Команда АйтиШторма за такой короткий промежуток времени сделала невозможное: от простой фирмы по услуге продвижения выросла в мощный блог о важности личного бренда. Класс!",
-    },
+    }
   ];
+
+  customOptionsReviews: OwlOptions = {
+    loop: true,
+    margin: 26,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+    },
+    nav: false
+  }
 
   articles: ArticleType[] = [];
 

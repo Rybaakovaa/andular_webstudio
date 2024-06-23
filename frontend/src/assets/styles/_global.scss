@@ -69,3 +69,29 @@ a {
   font-weight: 400;
   font-size: 38px;
 }
+
+.owl-theme .owl-nav.disabled+.owl-dots {
+  margin-top: -30px;
+  position: relative;
+  z-index: 3;
+}
+
+.owl-theme .owl-dots .owl-dot {
+  span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid white;
+    background-color: transparent;
+    box-sizing: border-box;
+  }
+
+  &:hover span {
+    background-color: white;
+  }
+  &.active span {
+    background-color: white;
+  }
+}
+
+
