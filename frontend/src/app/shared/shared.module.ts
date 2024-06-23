@@ -1,21 +1,25 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {RouterOutlet} from "@angular/router";
-import { PreparePhonePipe } from './pipes/prepare-phone.pipe';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {PreparePhonePipe} from './pipes/prepare-phone.pipe';
+import {ArticleComponent} from './components/article/article.component';
+import {HttpClientModule} from "@angular/common/http";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
   declarations: [
-
-    PreparePhonePipe
+    PreparePhonePipe,
+    ArticleComponent
   ],
-    imports: [
-        CommonModule,
-        RouterOutlet
-    ],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    RouterModule
+  ],
   exports: [
-    PreparePhonePipe
+    PreparePhonePipe,
+    ArticleComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

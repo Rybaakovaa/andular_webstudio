@@ -23,6 +23,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     this.isLogged = !!localStorage.getItem(this.accessTokenKey);
+    this.isLogged$.next(this.isLogged);
   }
 
   login(email: string, password: string, rememberMe: boolean): Observable<DefaultResponseType | AuthResponseType> {
@@ -65,14 +66,14 @@ export class AuthService {
     localStorage.setItem(this.accessTokenKey, accessToken);
     localStorage.setItem(this.refreshTokenKey, refreshToken);
     this.isLogged = true;
-    this.isLogged$.next(true);
+    this.isLogged$.next(this.isLogged);
   }
 
   public removeTokens(): void {
     localStorage.removeItem(this.accessTokenKey);
     localStorage.removeItem(this.refreshTokenKey);
     this.isLogged = false;
-    this.isLogged$.next(false);
+    this.isLogged$.next(this.isLogged);
   }
 
   public getTokens(): { accessToken: string | null, refreshToken: string | null } {

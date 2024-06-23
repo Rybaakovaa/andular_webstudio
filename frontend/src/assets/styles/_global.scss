@@ -1,5 +1,6 @@
 @import "variables";
 
+
 html, body {
   margin: 0;
   padding: 0;
@@ -18,7 +19,7 @@ html, body {
 
 
 .button {
-  background: #709fdc;
+  background: $text-color-blue;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -49,4 +50,22 @@ html, body {
   &::placeholder {
     color: #a8aba7;
   }
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+
+
+.blue {
+  color: $text-color-blue;
+}
+
+.lora-38 {
+  font-family: 'Lora', sans-serif;
+  font-weight: 400;
+  font-size: 38px;
 }

@@ -1,5 +1,5 @@
 @import "../../../assets/styles/variables";
-
+@import "../../../assets/styles/mixins";
 
 .services {
   padding: 60px 0;
@@ -7,10 +7,7 @@
   .container {
     .services-title {
       margin-bottom: 40px;
-      font-family: 'Lora', sans-serif;
-      font-weight: 400;
-      font-size: 38px;
-      color: $text-color-blue;
+      //@include lora-38-blue;
     }
 
     .services-list {
@@ -30,7 +27,7 @@
           border-radius: 5px;
           width: 291px;
           height: 291px;
-          margin-bottom: 5px;
+          margin-bottom: 15px;
         }
 
         .service-title {
@@ -42,9 +39,10 @@
 
         .service-description {
           font-size: 14px;
+          height: 90px;
           line-height: 130%;
           color: $text-color-dark-blue;
-          margin-bottom: 33px;
+          margin-bottom: 15px;
         }
 
         .service-info {
@@ -87,10 +85,7 @@
       width: 712px;
 
       .about-content-title {
-        font-family: 'Lora', sans-serif;
-        font-weight: 400;
-        font-size: 38px;
-        color: $text-color-blue;
+        //@include lora-38-blue;
         margin-bottom: 20px;
       }
 
@@ -112,8 +107,8 @@
         .advantages-title {
           font-family: 'Lora', sans-serif;
           font-weight: 400;
-          font-size: 26px;
           color: $text-color-blue;
+          font-size: 26px;
           margin-bottom: 20px;
         }
 
@@ -144,9 +139,9 @@
 
                 span {
                   font-family: 'Lora', sans-serif;
+                  color: $text-color-blue;
                   font-weight: 500;
                   font-size: 50px;
-                  color: $text-color-blue;
                   width: 40px;
                   text-align: center;
                   position: absolute;
@@ -175,4 +170,135 @@
       }
     }
   }
+}
+
+
+.popular-articles {
+  padding: 60px 0;
+
+  .container {
+
+    .articles-list {
+      margin: 40px 0;
+      display: flex;
+      gap: 24px;
+    }
+
+    .go-to-blog {
+      display: flex;
+      align-items: center;
+      justify-content: right;
+      gap: 14px;
+
+      a {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        color: $text-color-blue;
+      }
+    }
+  }
+}
+
+
+.reviews {
+  padding: 60px 0;
+
+  .container {
+    .carousel {
+      margin-top: 20px;
+      display: flex;
+      gap: 25px;
+
+      .review-item {
+        font-family: 'Montserrat', sans-serif;
+
+        border: 2px solid $text-color-blue;
+        border-radius: 5px;
+        width: 396px;
+        height: 267px;
+        padding: 30px;
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        gap: 15px;
+
+        .review-item-header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 26px;
+
+          .review-item-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+          }
+
+          .review-item-name{
+            font-weight: 600;
+            font-size: 18px;
+            color: $text-color-blue;
+        }
+
+          .review-item-text {
+            font-size: 16px;
+            line-height: 140%;
+            color: $text-color-dark-blue;
+          }
+        }
+      }
+    }
+  }
+}
+
+.coordinates {
+  padding: 60px 0 120px 0;
+
+  .container {
+    display: flex;
+    align-items: start;
+    gap: 26px;
+
+    .coordinates-info {
+      .coordinates-info-details {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .detail-item {
+          font-family: "Montserrat", sans-serif;
+
+          .detail-item-header {
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 20px;
+            color: $text-color-blue;
+          }
+
+          .detail-item-body {
+            font-size: 14px;
+            line-height: 130%;
+            color: $text-color-dark-blue;
+          }
+
+          &:last-child {
+            .detail-item-body {
+              display: flex;
+              gap: 20px;
+            }
+          }
+
+        }
+
+      }
+
+    }
+  }
+
+
 }

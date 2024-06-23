@@ -1,0 +1,55 @@
+@import "../../../../assets/styles/variables";
+
+
+.article {
+  display: flex;
+  flex-direction: column;
+  width: 292px;
+  height: 571px;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+
+  .article-category {
+    position: absolute;
+    right: 9px;
+    top: 10px;
+
+    border-radius: 5px;
+    background: #fff;
+    padding: 10px 18px;
+
+    font-weight: 400;
+    font-size: 11px;
+    color: $text-color-blue;
+  }
+
+  .article-image {
+    border-radius: 5px;
+    width: 291px;
+    height: 291px;
+    margin-bottom: 15px;
+  }
+
+  .article-title {
+    font-weight: 500;
+    font-size: 20px;
+    color: $text-color-blue;
+    margin-bottom: 10px;
+  }
+
+  .article-description {
+    font-size: 14px;
+    line-height: 130%;
+    color: $text-color-dark-blue;
+    margin-bottom: 15px;
+  }
+
+  .article-link {
+    font-size: 16px;
+    text-decoration: underline;
+    color: $text-color-blue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}

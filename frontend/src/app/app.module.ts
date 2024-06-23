@@ -21,8 +21,7 @@ import {MatMenuModule} from "@angular/material/menu";
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    MainComponent
-
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +29,7 @@ import {MatMenuModule} from "@angular/material/menu";
     SharedModule,
     MatSnackBarModule,
     MatMenuModule,
+    SharedModule,
     ReactiveFormsModule,
     AppRoutingModule,
     NoopAnimationsModule

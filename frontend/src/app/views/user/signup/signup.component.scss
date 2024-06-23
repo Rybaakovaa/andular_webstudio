@@ -1,4 +1,6 @@
 @import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+
 
 .signup {
   padding: 120px 0;
@@ -14,10 +16,8 @@
       gap: 40px;
 
       .form-title {
-        font-family: "Lora", sans-serif;
-        font-weight: 400;
+        @include lora-38-blue;
         font-size: 36px;
-        color: $text-color-blue;
       }
 
       .form-body {
