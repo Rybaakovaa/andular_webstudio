@@ -1,16 +1,39 @@
 @import "../../../assets/styles/variables";
 @import "../../../assets/styles/mixins";
 
-.services {
-  padding: 60px 0;
+.banner {
+  padding-bottom: 60px;
 
   .container {
-    .services-title {
-      margin-bottom: 40px;
-      //@include lora-38-blue;
+    position: relative;
+    width: $container-width;
+    height: 500px;
+
+    .mode-backward {
+      position: absolute;
+      top: calc(50% - 14px);
+      left: 11px;
+      z-index: 3;
     }
 
+    .mode-forward {
+      position: absolute;
+      top: calc(50% - 14px);
+      right: 11px;
+      z-index: 3;
+    }
+  }
+
+}
+
+
+.services {
+  padding: 120px 0 60px 0;
+
+  .container {
     .services-list {
+      margin-top: 40px;
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -33,7 +56,7 @@
         .service-title {
           font-weight: 500;
           font-size: 20px;
-          color: $text-color-blue;
+          color: $color-blue;
           margin-bottom: 10px;
         }
 
@@ -53,7 +76,7 @@
           .service-info-price {
             font-weight: 600;
             font-size: 20px;
-            color: $text-color-dark-blue;
+            color: $color-blue;
           }
 
           .button {
@@ -85,17 +108,17 @@
       width: 712px;
 
       .about-content-title {
-        //@include lora-38-blue;
-        margin-bottom: 20px;
       }
 
       .about-content-description {
+        margin-top: 20px;
+        margin-bottom: 40px;
+
         font-family: 'Montserrat', sans-serif;
         font-weight: 400;
         font-size: 14px;
         line-height: 130%;
         color: $text-color-dark-purple;
-        margin-bottom: 40px;
         max-width: 633px;
 
         span {
@@ -107,7 +130,7 @@
         .advantages-title {
           font-family: 'Lora', sans-serif;
           font-weight: 400;
-          color: $text-color-blue;
+          color: $color-blue;
           font-size: 26px;
           margin-bottom: 20px;
         }
@@ -132,14 +155,14 @@
 
               .advantages-item-body-circle {
                 border-radius: 100%;
-                background-color: #b9d5fd;
+                background-color: $color-light-blue;
                 width: 40px;
                 height: 40px;
                 position: relative;
 
                 span {
                   font-family: 'Lora', sans-serif;
-                  color: $text-color-blue;
+                  color: $color-blue;
                   font-weight: 500;
                   font-size: 50px;
                   width: 40px;
@@ -149,6 +172,7 @@
                   left: 0;
                 }
               }
+
               .advantages-item-body-text {
                 width: 256px;
 
@@ -161,12 +185,10 @@
                 span {
                   font-weight: 500;
                 }
-
               }
             }
           }
         }
-
       }
     }
   }
@@ -194,7 +216,7 @@
         font-family: "Montserrat", sans-serif;
         font-weight: 500;
         font-size: 20px;
-        color: $text-color-blue;
+        color: $color-blue;
       }
     }
   }
@@ -213,7 +235,7 @@
       .review-item {
         font-family: 'Montserrat', sans-serif;
 
-        border: 2px solid $text-color-blue;
+        border: 2px solid $color-blue;
         border-radius: 5px;
         width: 396px;
         height: 267px;
@@ -238,11 +260,11 @@
             border-radius: 50%;
           }
 
-          .review-item-name{
+          .review-item-name {
             font-weight: 600;
             font-size: 18px;
-            color: $text-color-blue;
-        }
+            color: $color-blue;
+          }
 
           .review-item-text {
             font-size: 16px;
@@ -277,7 +299,7 @@
             margin-bottom: 10px;
             font-weight: 500;
             font-size: 20px;
-            color: $text-color-blue;
+            color: $color-blue;
           }
 
           .detail-item-body {
@@ -292,13 +314,8 @@
               gap: 20px;
             }
           }
-
         }
-
       }
-
     }
   }
-
-
 }

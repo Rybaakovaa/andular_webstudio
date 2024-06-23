@@ -4,22 +4,25 @@ import {PreparePhonePipe} from './pipes/prepare-phone.pipe';
 import {ArticleComponent} from './components/article/article.component';
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
+import { BannerComponent } from './components/banner/banner.component';
 
 
 @NgModule({
   declarations: [
     PreparePhonePipe,
-    ArticleComponent
+    ArticleComponent,
+    BannerComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     RouterModule
   ],
-  exports: [
-    PreparePhonePipe,
-    ArticleComponent
-  ]
+    exports: [
+        PreparePhonePipe,
+        ArticleComponent,
+        BannerComponent
+    ]
 })
 export class SharedModule {
 }

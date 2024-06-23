@@ -2,7 +2,7 @@
 
 .footer {
   padding: 40px 0 54px 0;
-  background-color: #B9D5FD;
+  background-color: $color-light-blue;
 
   .container {
     font-size: 16px;
@@ -39,7 +39,7 @@
         max-width: 253px;
 
         .footer-row-item-title {
-          color: $text-color-blue;
+          color: $color-blue;
         }
 
         .footer-row-item-body {
@@ -66,7 +66,7 @@
 
   .footer-row-rights {
     margin-top: 6px;
-    color: $text-color-blue;
+    color: $color-blue;
   }
   }
 }

@@ -20,7 +20,7 @@
 
     font-weight: 400;
     font-size: 11px;
-    color: $text-color-blue;
+    color: $color-blue;
   }
 
   .article-image {
@@ -33,7 +33,7 @@
   .article-title {
     font-weight: 500;
     font-size: 20px;
-    color: $text-color-blue;
+    color: $color-blue;
     margin-bottom: 10px;
   }
 
@@ -47,7 +47,7 @@
   .article-link {
     font-size: 16px;
     text-decoration: underline;
-    color: $text-color-blue;
+    color: $color-blue;
     position: absolute;
     bottom: 0;
     left: 0;

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ArticleType} from "../../../types/article.type";
 import {ArticleService} from "../../shared/services/article.service";
 import {ReviewType} from "../../../types/review.type";
+import {ServiceType} from "../../../types/service.type";
+import {OwlOptions} from "ngx-owl-carousel-o";
 
 @Component({
   selector: 'app-main',
@@ -10,7 +12,86 @@ import {ReviewType} from "../../../types/review.type";
 })
 export class MainComponent implements OnInit {
 
-  reviewsImagePath = 'assets/images/pages/';
+  imagePath = 'assets/images/pages/';
+
+  banners = [
+    {
+      type: "Предложение месяца",
+      title: "Продвижение в <br>Instagram для вашего <br>бизнеса <span class='blue'>-15%!</span>",
+      text: "",
+      image: "banner-1.png"
+    },
+    {
+      type: "Акция",
+      title: "Нужен грамотный <br><span>копирайтер</span>?",
+      text: "Весь декабрь у нас действует акция на работу копирайтера.",
+      image: "banner-2.png"
+    },
+    {
+      type: "Новость дня",
+      title: "<span>6 место</span> в ТОП-10 <br>SMM-агенств Москвы!",
+      text: "Мы благодарим каждого, кто голосовал за нас!",
+      image: "banner-3.png"
+    },
+  ]
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    margin: 24,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      // 400: {
+      //   items: 2
+      // },
+      // 740: {
+      //   items: 3
+      // },
+      // 940: {
+      //   items: 4
+      // }
+    },
+    nav: false
+  }
+
+  services: ServiceType[] = [
+    {
+      title: "Создание сайтов",
+      description: "В краткие сроки мы создадим качественный и самое главное продающий сайт для продвижения Вашего бизнеса!",
+      image: 'services-1.png',
+      price:  "7 500",
+      // url: "от куда брать сылку на услугу ???",
+    },
+    {
+      title: "Продвижение",
+      description: "Вам нужен качественный SMM-специалист или грамотный таргетолог? Мы готовы оказать Вам услугу “Продвижения” на наивысшем уровне!",
+      image: 'services-2.png',
+      price:  "3 500",
+      // url: "от куда брать сылку на услугу ???",
+    },
+    {
+      title: "Реклама",
+      description: "Без рекламы не может обойтись ни один бизнес или специалист. Обращаясь к нам, мы гарантируем быстрый прирост клиентов за счёт правильно настроенной рекламы.",
+      image: 'services-3.png',
+      price:  "1 000",
+      // url: "от куда брать сылку на услугу ???",
+    },
+    {
+      title: "Копирайтинг",
+      description: "Наши копирайтеры готовы написать Вам любые продающие текста, которые не только обеспечат рост охватов, но и помогут выйти на новый уровень в продажах.",
+      image: 'services-4.png',
+      price:  "750",
+      // url: "от куда брать сылку на услугу ???",
+    },
+  ]
+
   reviews: ReviewType[] = [
     {
       name: "Станислав",
@@ -41,5 +122,7 @@ export class MainComponent implements OnInit {
       this.articles = data;
     });
   }
+
+
 
 }

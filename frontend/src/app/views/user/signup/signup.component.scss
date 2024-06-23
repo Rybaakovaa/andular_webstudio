@@ -16,7 +16,6 @@
       gap: 40px;
 
       .form-title {
-        @include lora-38-blue;
         font-size: 36px;
       }
 
@@ -47,7 +46,7 @@
 
             a {
               text-decoration: underline;
-              color: $text-color-blue;
+              color: $color-blue;
             }
           }
         }
@@ -64,7 +63,7 @@
 
         a {
           text-decoration: none;
-          color: $text-color-blue;
+          color: $color-blue;
         }
       }
     }

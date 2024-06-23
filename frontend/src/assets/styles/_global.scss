@@ -19,7 +19,7 @@ html, body {
 
 
 .button {
-  background: $text-color-blue;
+  background: $color-blue;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -38,7 +38,7 @@ html, body {
 }
 
 .input {
-  border: 2px solid $text-color-blue;
+  border: 2px solid $color-blue;
   border-radius: 3px;
   padding: 20px;
   font-size: 14px;
@@ -61,7 +61,7 @@ a {
 
 
 .blue {
-  color: $text-color-blue;
+  color: $color-blue;
 }
 
 .lora-38 {
