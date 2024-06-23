@@ -5,6 +5,6 @@
 <!--    <img src="imagePath/{{article.image}}" alt="picture">-->
   </div>
   <div class="article-title">{{article.title}}</div>
-  <div class="article-description">{{article.description}}</div>
+  <div class="article-description">{{article.description  | truncate:200:true}}</div>
   <a class="article-link" routerLink="/articles/{{article.url}}">Читать дальше</a>
 </div>

@@ -35,7 +35,7 @@
 
 
 .services {
-  padding: 120px 0 60px 0;
+  padding: 60px 0;
 
   .container {
     .services-list {
@@ -71,7 +71,7 @@
           font-size: 14px;
           height: 90px;
           line-height: 130%;
-          color: $text-color-dark-blue;
+          color: $color-dark-blue;
           margin-bottom: 15px;
         }
 
@@ -125,7 +125,7 @@
         font-weight: 400;
         font-size: 14px;
         line-height: 130%;
-        color: $text-color-dark-purple;
+        color: $color-dark-purple;
         max-width: 633px;
 
         span {
@@ -187,7 +187,7 @@
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 130%;
-                color: $text-color-dark-purple;
+                color: $color-dark-purple;
 
                 span {
                   font-weight: 500;
@@ -282,7 +282,7 @@
           .review-item-text {
             font-size: 16px;
             line-height: 140%;
-            color: $text-color-dark-blue;
+            color: $color-dark-blue;
           }
         }
       }
@@ -318,7 +318,7 @@
           .detail-item-body {
             font-size: 14px;
             line-height: 130%;
-            color: $text-color-dark-blue;
+            color: $color-dark-blue;
           }
 
           &:last-child {

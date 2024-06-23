@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ArticleType} from "../../../types/article.type";
 import {ArticleService} from "../../shared/services/article.service";
 import {ReviewType} from "../../../types/review.type";
@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
   banners = [
     {
       type: "Предложение месяца",
-      title: "Продвижение в <br>Instagram для вашего <br>бизнеса <span class='blue'>-15%!</span>",
+      title: "Продвижение в <br>Instagram для вашего <br>бизнеса <span>-15%!</span>",
       text: "",
       image: "banner-1.png"
     },
@@ -124,16 +124,16 @@ export class MainComponent implements OnInit {
     nav: false
   }
 
-  articles: ArticleType[] = [];
+  popularArticles: ArticleType[] = [];
 
   constructor(private articleService: ArticleService) {
   }
 
   ngOnInit(): void {
     // запрос на популярные статьи
-    this.articleService.getPopularArticle().subscribe((data: ArticleType[]) => {
+    this.articleService.getPopularArticles().subscribe((data: ArticleType[]) => {
       console.log(data)
-      this.articles = data;
+      this.popularArticles = data;
     });
   }
 

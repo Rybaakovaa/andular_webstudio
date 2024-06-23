@@ -1,0 +1,283 @@
+@import "../../../../assets/styles/variables";
+
+
+.breadcrumb {
+  padding-top: 80px;
+  padding-bottom: 60px;
+
+  .container {
+    div {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      color: $color-blue;
+    }
+  }
+}
+
+
+.page-introduction {
+  padding-bottom: 60px;
+
+  .container {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 100px;
+
+    .introduction-content {
+
+
+      .introduction-title {
+        margin: 0 0 40px 0;
+        padding: 0;
+      }
+
+      .introduction-text {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 130%;
+        color: $color-blue;
+      }
+    }
+
+
+  }
+
+}
+
+
+.page-content {
+  padding-bottom: 120px;
+
+  .container {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 130px;
+
+    .page-content-main {
+      .page-article {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        color: $color-dark-blue;
+
+
+        h3, b {
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 130%;
+          color: $color-blue;
+        }
+
+        h3 {
+          margin-top: 40px;
+        }
+
+        p {
+          margin: 10px 0;
+        }
+
+        // убираем отступ для любого первого элемента
+        & > *:first-child {
+          margin-top: 0;
+        }
+      }
+
+      .page-links {
+        margin: 60px 0;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        span {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 500;
+          font-size: 14px;
+          color: $color-blue;
+        }
+
+        .page-links-icon {
+          display: flex;
+          align-items: center;
+          gap: 13px;
+
+          a {
+            height: 20px;
+          }
+        }
+
+      }
+
+      .page-comments {
+        padding: 60px 0 120px 0;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
+        color: $color-dark-blue;
+
+        .comments-first {
+          margin-top: 20px;
+        }
+
+        .comments-area {
+          margin-top: 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+          textarea {
+            border: 2px solid $color-blue;
+            border-radius: 3px;
+            padding: 20px;
+            //width: 818px;
+            //height: 248px;
+
+            &::placeholder {
+              font-family: "Montserrat", sans-serif;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 130%;
+              color: #a8aba7;
+            }
+          }
+
+          .button {
+            width: 422px;
+            height: 51px;
+          }
+        }
+
+        .comments-list {
+          margin-top: 60px;
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+
+          .comment-item {
+            font-family: "Montserrat", sans-serif;
+            display: flex;
+            flex-direction: column;
+
+
+            .comment-header {
+              margin-bottom: 15px;
+              display: flex;
+              align-items: start;
+              gap: 26px;
+
+              .comment-header-avatar {
+                width: 60px;
+                height: 60px;
+                background-color: $color-light-blue;
+                border: 2px solid $color-blue;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+
+              .comment-header-info {
+                font-weight: 600;
+                line-height: 130%;
+
+                .comment-header-info-name {
+                  font-size: 18px;
+                  color: $color-blue;
+                  margin-bottom: 10px;
+                }
+
+                .comment-header-info-date {
+                  font-size: 14px;
+                  line-height: 130%;
+                  color: #bebebe;
+                }
+              }
+
+            }
+
+            .comment-footer {
+              margin-top: 39px;
+              display: flex;
+              align-items: center;
+              gap: 15px;
+
+              .comment-footer-item {
+                display: flex;
+                align-items: center;
+                gap: 3px;
+
+                span {
+                  font-family: "Montserrat", sans-serif;
+                  font-weight: 600;
+                  font-size: 14px;
+                  line-height: 24px;
+                  color: $color-dark-blue;
+                  height: 24px;
+                }
+
+                a {
+                  height: 24px;
+                }
+
+                &:hover {
+                  span {
+                    color: $color-blue;
+                  }
+
+                  a svg path {
+                    stroke: $color-blue;
+                  }
+                }
+              }
+
+
+            }
+
+          }
+
+          .comment-more {
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            span {
+              font-family: "Montserrat", sans-serif;
+              font-weight: 500;
+              font-size: 20px;
+              line-height: 130%;
+              color: $color-blue;
+            }
+          }
+
+        }
+      }
+    }
+
+
+    .page-related {
+      .page-related-title {
+        font-family: "Lora", sans-serif;
+        font-weight: 400;
+        font-size: 26px;
+        color: $color-blue;
+        margin-top: 60px;
+        margin-bottom: 20px;
+      }
+
+      .page-related-list {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+      }
+
+    }
+
+
+  }
+}

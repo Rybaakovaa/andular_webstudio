@@ -42,7 +42,7 @@ html, body {
   border-radius: 3px;
   padding: 20px;
   font-size: 14px;
-  color: $text-color-dark-blue;
+  color: $color-dark-blue;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   box-sizing: border-box;
@@ -60,14 +60,23 @@ a {
 
 
 
-.blue {
-  color: $color-blue;
-}
+//.blue {
+//  color: $color-blue;
+//}
+//
+//.lora-38 {
+//  font-family: 'Lora', sans-serif;
+//  font-weight: 400;
+//  font-size: 38px;
+//  line-height: 130%;
+//}
 
-.lora-38 {
+.lora-38-blue {
   font-family: 'Lora', sans-serif;
   font-weight: 400;
   font-size: 38px;
+  line-height: 130%;
+  color: $color-blue;
 }
 
 .owl-theme .owl-nav.disabled+.owl-dots {
@@ -93,5 +102,6 @@ a {
     background-color: white;
   }
 }
+
 
 

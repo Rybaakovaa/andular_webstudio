@@ -23,7 +23,7 @@ import {CarouselModule} from "ngx-owl-carousel-o";
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    MainComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
