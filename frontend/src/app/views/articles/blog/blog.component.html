@@ -2,14 +2,27 @@
   <div class="container">
     <div class="blog-title lora-38-blue">Блог</div>
     <div class="blog-header">
-      <div class="blog-header-applied-filters">
+      <div class="blog-applied-filters">
 
       </div>
-      <div class="blog-header-filter">
-        <span>Фильтр</span>
-        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 14.5C9.41668 14.5 8.83335 14.275 8.39168 13.8334L2.95835 8.40003C2.71668 8.15837 2.71668 7.75837 2.95835 7.5167C3.20002 7.27503 3.60002 7.27503 3.84168 7.5167L9.27502 12.95C9.67502 13.35 10.325 13.35 10.725 12.95L16.1583 7.5167C16.4 7.27503 16.8 7.27503 17.0417 7.5167C17.2833 7.75837 17.2833 8.15837 17.0417 8.40003L11.6083 13.8334C11.1667 14.275 10.5833 14.5 10 14.5Z" fill="#071739" />
-        </svg>
+      <div class="blog-filter" [class.open]="filterOpen" (click)="toggleFilter()">
+        <div class="blog-filter-main">
+          <span>Фильтр</span>
+          <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10 14.5C9.41668 14.5 8.83335 14.275 8.39168 13.8334L2.95835 8.40003C2.71668 8.15837 2.71668 7.75837 2.95835 7.5167C3.20002 7.27503 3.60002 7.27503 3.84168 7.5167L9.27502 12.95C9.67502 13.35 10.325 13.35 10.725 12.95L16.1583 7.5167C16.4 7.27503 16.8 7.27503 17.0417 7.5167C17.2833 7.75837 17.2833 8.15837 17.0417 8.40003L11.6083 13.8334C11.1667 14.275 10.5833 14.5 10 14.5Z"
+              fill="#071739"/>
+          </svg>
+        </div>
+        <div class="blog-filter-list">
+          <a *ngFor="let category of categories"
+             [class.active]="activeParams.categories?.includes(category.name)"
+             (click)="updateFilters(category.name)">
+            <span>{{category.name}}</span>
+            <span *ngIf="category.isChecked">-</span>
+            <span *ngIf="!category.isChecked">+</span>
+          </a>
+        </div>
       </div>
 
     </div>
@@ -17,8 +30,26 @@
       <app-article *ngFor="let article of articles" [article]="article"></app-article>
     </div>
 
-    <div class="blog-pagination-pages" *ngIf="countPage > 0">
-      <a class="blog-pagination-page" *ngFor="let i of countArray">{{i + 1}}</a>
+    <div class="blog-pagination-pages" *ngIf="countPages.length > 1">
+      <div class="pagination-arrow" (click)="openPrevPage()"
+           [class.disabled]="activeParams.page ? activeParams.page === 1 : true">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M0.46967 8.46967C0.176777 8.76256 0.176777 9.23744 0.46967 9.53033L8.46967 17.5303C8.76256 17.8232 9.23744 17.8232 9.53033 17.5303C9.82322 17.2374 9.82322 16.7626 9.53033 16.4697L2.06066 9L9.53033 1.53033C9.82322 1.23744 9.82322 0.762563 9.53033 0.46967C9.23744 0.176777 8.76256 0.176777 8.46967 0.46967L0.46967 8.46967Z"
+                fill="#BDD7FD"/>
+        </svg>
+      </div>
+      <a class="blog-pagination-page" *ngFor="let i of countPages"
+         [class.active]="this.activeParams.page === i + 1"
+         (click)="openPage(i+1)">{{i + 1}}</a>
+      <div class="pagination-arrow" (click)="openNextPage()"
+           [class.disabled]="activeParams.page ? activeParams.page === countPages.length : false">
+        <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M9.53033 9.53033C9.82322 9.23744 9.82322 8.76256 9.53033 8.46967L1.53033 0.469669C1.23744 0.176777 0.762564 0.176777 0.46967 0.469669C0.176777 0.762563 0.176777 1.23744 0.46967 1.53033L7.93934 9L0.469669 16.4697C0.176777 16.7626 0.176776 17.2374 0.469669 17.5303C0.762563 17.8232 1.23744 17.8232 1.53033 17.5303L9.53033 9.53033Z"
+                fill="#BDD7FD"/>
+        </svg>
+      </div>
     </div>
   </div>
 </div>
