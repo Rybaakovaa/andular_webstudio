@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArticleType} from "../../../../types/article.type";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-article',
@@ -9,7 +10,8 @@ import {ArticleType} from "../../../../types/article.type";
 export class ArticleComponent implements OnInit {
 
   @Input() article!: ArticleType;
-  // imagePath =
+
+  imagePath: string = environment.imagePath;
 
   constructor() { }
 

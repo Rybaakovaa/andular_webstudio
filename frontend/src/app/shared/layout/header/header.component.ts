@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   numberPhone: string = "74993431334";
   isLogged: boolean = false;
-  userName: string = '';
+  userName: string | null = null;
 
   constructor(private authService: AuthService,
               private _snackBar: MatSnackBar,
@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
     this.authService.isLogged$.subscribe((isLoggedIn: boolean) => {
       this.isLogged = isLoggedIn;
     });
-    this.authService.userName$.subscribe((name: string) => {
+    this.authService.userName$.subscribe((name: string | null) => {
       this.userName = name;
     });
   }

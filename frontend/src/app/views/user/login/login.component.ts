@@ -95,7 +95,6 @@ export class LoginComponent implements OnInit {
           } else {
             this._snackBar.open('Ошибка получения данных пользователя.');
           }
-          this.authService.setUserInfo(name, email);
         }
       });
   }

@@ -8,7 +8,7 @@
                  (loginForm.get('email')?.dirty && loginForm.get('email')?.touched) ?
                  'red' : ''}"
                formControlName="email">
-        <input class="input" type="text" placeholder="Пароль"
+        <input class="input" type="password" placeholder="Пароль"
                [ngStyle]="{'border-color': loginForm.get('password')?.invalid &&
                  (loginForm.get('password')?.dirty && loginForm.get('password')?.touched) ?
                  'red' : ''}"
@@ -25,7 +25,7 @@
     </div>
 
     <div class="page-image">
-      <img src="../../../../assets/images/pages/auth-login.png" alt="picture">
+      <img src="assets/images/pages/auth-login.png" alt="picture">
     </div>
   </div>
 </section>

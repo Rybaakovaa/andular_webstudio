@@ -66,14 +66,14 @@
         color: $color-dark-blue;
 
 
-        h3, b {
+        *:not(p) {
           font-weight: 500;
           font-size: 20px;
           line-height: 130%;
           color: $color-blue;
         }
 
-        h3 {
+        h1, h2, h3, h4, h5 {
           margin-top: 40px;
         }
 

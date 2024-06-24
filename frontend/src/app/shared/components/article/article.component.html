@@ -1,8 +1,8 @@
 <div class="article">
   <div class="article-category">{{article.category}}</div>
   <div class="article-image">
-    <img src="assets/images/pages/services-4.png" alt="picture">
-<!--    <img src="imagePath/{{article.image}}" alt="picture">-->
+<!--    <img src="assets/images/pages/services-4.png" alt="picture">-->
+    <img src="{{imagePath + article.image}}" alt="picture">
   </div>
   <div class="article-title">{{article.title}}</div>
   <div class="article-description">{{article.description  | truncate:200:true}}</div>

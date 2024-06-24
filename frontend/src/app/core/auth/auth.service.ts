@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject, throwError} from "rxjs";
+import {BehaviorSubject, Observable, Subject, throwError} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {AuthResponseType} from "../../../types/auth-response.type";
@@ -17,13 +17,14 @@ export class AuthService {
   public nameKey = 'name';
   public emailKey = 'email';
 
-  public isLogged$: Subject<boolean> = new Subject<boolean>(); // оповещение для слушателей
+  public isLogged$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false); // оповещение для слушателей
   private isLogged: boolean = false; // текущщее состояние
-  public userName$: Subject<string> = new Subject<string>();
+  public userName$: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
   constructor(private http: HttpClient) {
     this.isLogged = !!localStorage.getItem(this.accessTokenKey);
     this.isLogged$.next(this.isLogged);
+    this.userName$.next(localStorage.getItem(this.nameKey));
   }
 
   login(email: string, password: string, rememberMe: boolean): Observable<DefaultResponseType | AuthResponseType> {
@@ -98,7 +99,7 @@ export class AuthService {
 
 
   getUserInfo(): Observable<DefaultResponseType | AuthResponseGetNameType> {
-    return this.http.get<DefaultResponseType | AuthResponseGetNameType>(environment.api + 'users', {withCredentials: true})
+    return this.http.get<DefaultResponseType | AuthResponseGetNameType>(environment.api + 'users');
   }
 
   public setUserInfo(name: string, email: string): void {
@@ -110,6 +111,6 @@ export class AuthService {
   public removeUserInfo(): void {
     localStorage.removeItem(this.nameKey);
     localStorage.removeItem(this.emailKey);
-    this.userName$.next('');
+    this.userName$.next(null);
   }
 }

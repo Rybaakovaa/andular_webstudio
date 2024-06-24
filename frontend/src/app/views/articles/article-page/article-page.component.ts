@@ -26,30 +26,30 @@ export class ArticlePageComponent implements OnInit {
     // подписываемся на !params! т к 'products/:url'
     this.activatedRoute.params.subscribe(params => {
       this.urlParam = params['url'];
+
+      if (this.urlParam) {
+        // запрос по текущей статье
+        this.articleService.getArticle(this.urlParam)
+          .subscribe((data: ArticleType | DefaultResponseType) => {
+            if ((data as DefaultResponseType).error) {
+              // ...
+              throw new Error((data as DefaultResponseType).message);
+            }
+            this.curArticles = data as ArticleType;
+            console.log(this.curArticles)
+          });
+
+        // запрос на читать также
+        this.articleService.getRelatedArticles(this.urlParam)
+          .subscribe((data: ArticleType[] | DefaultResponseType) => {
+            if ((data as DefaultResponseType).error) {
+              // ...
+              throw new Error((data as DefaultResponseType).message);
+            }
+            this.relatedArticles = data as ArticleType[];
+          });
+      }
     });
-
-    if (this.urlParam) {
-      // запрос по текущей статье
-      this.articleService.getArticle(this.urlParam)
-        .subscribe((data: ArticleType | DefaultResponseType) => {
-          if ((data as DefaultResponseType).error) {
-            // ...
-            throw new Error((data as DefaultResponseType).message);
-          }
-          console.log(data as ArticleType)
-          this.curArticles = data as ArticleType;
-        });
-
-      // запрос на читать также
-      this.articleService.getRelatedArticles(this.urlParam)
-        .subscribe((data: ArticleType[] | DefaultResponseType) => {
-          if ((data as DefaultResponseType).error) {
-            // ...
-            throw new Error((data as DefaultResponseType).message);
-          }
-          this.relatedArticles = data as ArticleType[];
-        });
-    }
   }
 
 
