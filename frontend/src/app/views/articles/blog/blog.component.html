@@ -3,7 +3,17 @@
     <div class="blog-title lora-38-blue">Блог</div>
     <div class="blog-header">
       <div class="blog-applied-filters">
-
+        <ng-container *ngFor="let category of categories">
+          <a *ngIf="activeParams.categories?.includes(category.url)" (click)="deleteFilter(category.url)">
+            <span>{{category.name}}</span>
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_12717_586)">
+                <line x1="1.93553" y1="3.15002" x2="13.9563" y2="15.1708" stroke="#709FDC" stroke-linecap="round"/>
+                <line x1="13.9236" y1="3.12984" x2="1.90278" y2="15.1507" stroke="#709FDC" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </a>
+        </ng-container>
       </div>
       <div class="blog-filter" [class.open]="filterOpen" (click)="toggleFilter()">
         <div class="blog-filter-main">
@@ -16,8 +26,8 @@
         </div>
         <div class="blog-filter-list">
           <a *ngFor="let category of categories"
-             [class.active]="activeParams.categories?.includes(category.name)"
-             (click)="updateFilters(category.name)">
+             [class.active]="activeParams.categories?.includes(category.url)"
+             (click)="updateFilters(category.url)">
             <span>{{category.name}}</span>
             <span *ngIf="category.isChecked">-</span>
             <span *ngIf="!category.isChecked">+</span>

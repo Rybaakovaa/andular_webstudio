@@ -6,6 +6,7 @@ import {BlogArticlesType} from "../../../../types/blog-articles.type";
 import {ActiveParamsType} from "../../../../types/active-params.type";
 import {CategoryType} from "../../../../types/category.type";
 import {CommonService} from "../../../shared/services/common.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-blog',
@@ -22,30 +23,45 @@ export class BlogComponent implements OnInit {
   activeParams: ActiveParamsType = {categories: [], page: 1};
   categories: CategoryType[] = [];
 
-
-  filterOpen = false;
-
+  filterOpen: boolean = false;
 
   constructor(private articleService: ArticleService,
-              private commonService: CommonService) {
+              private commonService: CommonService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
-    this.getArticlesRequest();
     this.getCategoriesRequest();
+
+    // подписываемся на изменение query парамтеров
+    this.activatedRoute.queryParams
+      // добавляем задержу (защита от кучи запросов)
+      // .pipe(
+      //   debounceTime(500)
+      // )
+      .subscribe(params => {
+        if (params.hasOwnProperty('categories')) {
+          this.activeParams.categories = Array.isArray(params['categories']) ?  params['categories'] : [params['categories']];
+        }
+        if (params.hasOwnProperty('page')) {
+          this.activeParams.page = +params['page'];
+        }
+
+        // запрос на нове продукты (в соответствии с фильром)
+        this.getArticlesRequest();
+      });
+
   }
 
   getCategoriesRequest() {
     this.commonService.getCategories()
       .subscribe((data: CategoryType[]) => {
         this.categories = data.map(item => {
-          item.isChecked = false;
+          item.isChecked = !!this.activeParams.categories?.includes(item.url);
           return item;
         });
-        console.log('this.categories')
-        console.log(this.categories)
       });
-
   }
 
   getArticlesRequest() {
@@ -58,27 +74,27 @@ export class BlogComponent implements OnInit {
   }
 
 
+  goToPage() {
+    this.router.navigate(['/articles'], {queryParams: this.activeParams});
+  }
+
 
   openPage(numberPage: number) {
     this.activeParams.page = numberPage;
-    this.getArticlesRequest();
-    // this.router.navigate(['/catalog'], {queryParams: this.activeParams});
+    this.goToPage();
   }
 
   openPrevPage() {
     if (this.activeParams.page > 1) {
       this.activeParams.page--;
-      this.getArticlesRequest();
-      // this.router.navigate(['/catalog'], {queryParams: this.activeParams});
+      this.goToPage();
     }
   }
 
   openNextPage() {
     if (this.activeParams.page < this.countPages.length) {
       this.activeParams.page++;
-      console.log(this.activeParams)
-      this.getArticlesRequest();
-      // this.router.navigate(['/catalog'], {queryParams: this.activeParams});
+      this.goToPage();
     }
   }
 
@@ -88,13 +104,13 @@ export class BlogComponent implements OnInit {
     this.filterOpen = !this.filterOpen;
   }
 
-  updateFilters(category: string) {
+  updateFilters(categoryUrl: string) {
     if (this.activeParams.categories) {
-      const index = this.activeParams.categories.indexOf(category);
+      const index = this.activeParams.categories.indexOf(categoryUrl);
       if (index === -1) {
-        this.activeParams.categories.push(category);
+        this.activeParams.categories.push(categoryUrl);
         this.categories.map(item => {
-          if (item.name === category) {
+          if (item.url === categoryUrl) {
             item.isChecked = true;
           }
           return item;
@@ -102,16 +118,28 @@ export class BlogComponent implements OnInit {
       } else {
         this.activeParams.categories.splice(index, 1);
         this.categories.map(item => {
-          if (item.name === category) {
+          if (item.url === categoryUrl) {
             item.isChecked = false;
           }
           return item;
         });
       }
     }
-    console.log(this.activeParams)
-    this.getArticlesRequest();
-    // this.router.navigate(['/catalog'], {queryParams: this.activeParams});
+    this.goToPage();
+  }
+
+  deleteFilter(categoryUrl: string) {
+    if (this.activeParams.categories) {
+      const index = this.activeParams.categories.indexOf(categoryUrl);
+      this.activeParams.categories.splice(index, 1);
+      this.categories.map(item => {
+        if (item.url === categoryUrl) {
+          item.isChecked = false;
+        }
+        return item;
+      });
+      this.goToPage();
+    }
   }
 
 

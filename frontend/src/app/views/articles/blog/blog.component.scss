@@ -11,6 +11,32 @@
       align-items: center;
       justify-content: space-between;
 
+      .blog-applied-filters {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        max-width: 900px;
+
+        a {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 20px;
+          box-sizing: border-box;
+          border: 2px solid $color-blue;
+          border-radius: 5px;
+
+          span {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 130%;
+            color: $color-blue;
+          }
+        }
+
+      }
+
       .blog-filter {
         position: relative;
 
@@ -68,7 +94,7 @@
             }
 
             &:hover,
-            &.applied {
+            &.active {
               color: $color-dark-blue;
             }
           }
