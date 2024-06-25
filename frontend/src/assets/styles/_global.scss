@@ -50,7 +50,12 @@ html, body {
   &::placeholder {
     color: #a8aba7;
   }
+
+  &:focus-visible {
+    outline: none;
+  }
 }
+
 
 a {
   cursor: pointer;

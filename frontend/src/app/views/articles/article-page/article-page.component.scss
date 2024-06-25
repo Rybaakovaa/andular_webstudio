@@ -148,6 +148,10 @@
               line-height: 130%;
               color: #a8aba7;
             }
+
+            &:focus-visible {
+              outline: none;
+            }
           }
 
           .button {
