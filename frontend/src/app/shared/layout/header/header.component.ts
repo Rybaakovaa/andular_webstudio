@@ -47,4 +47,7 @@ export class HeaderComponent implements OnInit {
     this._snackBar.open('Вы вышли из системы.');
     this.router.navigate(['/']);
   }
+
+
+
 }

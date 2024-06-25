@@ -18,10 +18,6 @@ export class ArticleService {
     return this.http.get<ArticleType | DefaultResponseType>(environment.api + 'articles/' + url);
   }
 
-  // getArticles(): Observable<BlogArticlesType> {
-  //   return this.http.get<BlogArticlesType>(environment.api + 'articles');
-  // }
-
   getArticles(params: ActiveParamsType): Observable<BlogArticlesType> {
     return this.http.get<BlogArticlesType>(environment.api + 'articles', {
       params: params
