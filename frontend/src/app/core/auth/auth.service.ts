@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, Subject, throwError} from "rxjs";
+import {BehaviorSubject, Observable, throwError} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {AuthResponseType} from "../../../types/auth-response.type";
@@ -21,7 +21,8 @@ export class AuthService {
   private isLogged: boolean = false; // текущщее состояние
   public userName$: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient)
+  {
     this.isLogged = !!localStorage.getItem(this.accessTokenKey);
     this.isLogged$.next(this.isLogged);
     this.userName$.next(localStorage.getItem(this.nameKey));
@@ -113,4 +114,5 @@ export class AuthService {
     localStorage.removeItem(this.emailKey);
     this.userName$.next(null);
   }
+
 }

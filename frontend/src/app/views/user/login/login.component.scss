@@ -20,6 +20,13 @@
 
       .form-body {
         width: 422px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .text-danger {
+          color: red;
+        }
 
         .input {
           width: 422px;
@@ -29,7 +36,17 @@
         .rememberMe {
           margin-top: 5px;
           display: flex;
-          align-items: baseline;
+          align-items: start;
+          gap: 10px;
+
+          input {
+            margin: 0;
+            padding: 0;
+            margin-top: 3px;
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+          }
 
           label {
             margin-left: 4px;

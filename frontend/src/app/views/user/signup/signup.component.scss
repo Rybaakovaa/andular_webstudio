@@ -21,20 +21,32 @@
 
       .form-body {
         width: 422px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .text-danger {
+          color: red;
+        }
 
         .input {
           width: 422px;
           margin-bottom: 5px;
         }
 
-        .rememberMe {
+        .agree {
           margin-top: 5px;
           display: flex;
-          align-items: baseline;
+          align-items: start;
+          gap: 10px;
 
           input {
             margin: 0;
             padding: 0;
+            margin-top: 2px;
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
           }
 
           label {
@@ -43,11 +55,14 @@
             line-height: 130%;
             color: $color-dark-blue;
             text-align: justify;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+          }
 
-            a {
-              text-decoration: underline;
-              color: $color-blue;
-            }
+          a {
+            text-decoration: underline;
+            color: $color-blue;
           }
         }
       }
