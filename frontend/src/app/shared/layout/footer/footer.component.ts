@@ -19,7 +19,22 @@ export class FooterComponent implements OnInit {
 
   callForm() {
     this.formPopupService.show();
-    this.formPopupService.setContent('callForm');
+    this.formPopupService.setContent({
+      title: 'Бесплатная консультация!',
+      // inputs: [
+      //   {
+      //   type: 'name',
+      //   placeholder: 'Ваше имя'
+      // },
+      //   {
+      //   type: 'name',
+      //   placeholder: 'Ваш номер телефона'
+      // },
+      // ],
+      button: {
+        text: 'Заказать звонок',
+      }
+    });
   }
 
 }

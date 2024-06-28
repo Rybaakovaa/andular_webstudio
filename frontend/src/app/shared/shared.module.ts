@@ -8,6 +8,7 @@ import {BannerComponent} from './components/banner/banner.component';
 import {TruncatePipe} from './pipes/truncate.pipe';
 import { DateConvertPipe } from './pipes/date-convert.pipe';
 import { FormPopupComponent } from './components/form-popup/form-popup.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { FormPopupComponent } from './components/form-popup/form-popup.component
   imports: [
     CommonModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule,
   ],
   exports: [

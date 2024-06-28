@@ -1,5 +1,6 @@
 import {HostListener, Injectable} from '@angular/core';
 import {BehaviorSubject, Subject} from "rxjs";
+import {PopupFormType} from "../../../types/popup-form.type";
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,7 @@ export class FormPopupService {
 
   isShowed$ = new Subject<boolean>();
 
-  formPopupContent: string | null = null;
-  formPopupContent$ = new Subject<string | null>();
+  formPopupContent$ = new Subject<PopupFormType>();
 
   constructor() {
   }
@@ -22,9 +22,8 @@ export class FormPopupService {
     this.isShowed$.next(false);
   }
 
-  setContent(str: string) {
-    this.formPopupContent = str;
-    this.formPopupContent$.next(this.formPopupContent);
+  setContent(content: PopupFormType) {
+    this.formPopupContent$.next(content);
   }
 }
 

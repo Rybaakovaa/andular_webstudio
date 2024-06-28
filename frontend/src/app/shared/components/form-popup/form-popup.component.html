@@ -1,4 +1,5 @@
 <div class="form-popup" *ngIf="isShowed">
+<!--  <div class="form-popup" >-->
   <div class="form-popup-container">
     <a class="close" (click)="closePopup()">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -8,11 +9,39 @@
     </a>
 
     <div class="form-popup-content" *ngIf="!isSend">
-      <div class="popup-title lora-38-blue">Закажите бесплатную консультацию!</div>
-      <div class="form">
-        <input class="input" type="text" placeholder="Ваше имя">
-        <input class="input" type="tel" placeholder="Ваш номер телефона">
-        <button class="button" (click)="sendForm()">Оставить заявку</button>
+      <div class="popup-title lora-38-blue">{{formPopupContent.title}}</div>
+      <div class="form" [formGroup]="popupForm">
+        <div class="select" name="select" (click)="selectHeaderClick()"
+             *ngIf="formPopupContent.comboBox && formPopupContent.comboBox.active">
+          <div class="select-header">
+            {{formPopupContent.comboBox.active}}
+          </div>
+          <div class="select-body" *ngIf="selectBodyOpen">
+            <div class="select-item" (click)="selectItemClick(item)"
+                 [class.active]="formPopupContent.comboBox.active === item"
+                 *ngFor="let item of formPopupContent.comboBox.items">{{item}}</div>
+          </div>
+        </div>
+
+        <input class="input" type="text" placeholder="Ваше имя" formControlName="name"
+               [ngStyle]="{'border-color': popupForm.get('name')?.invalid &&
+               (popupForm.get('name')?.dirty || popupForm.get('name')?.touched) ? 'red' : ''}">
+        <div *ngIf="popupForm.get('name')?.invalid && (popupForm.get('name')?.dirty || popupForm.get('name')?.touched)">
+          <div class="text-danger" *ngIf="popupForm.get('name')?.errors?.['required']  && !popupForm.get('name')?.value">
+            Имя обязательно для заполнения
+          </div>
+          <div class="text-danger" *ngIf="popupForm.get('name')?.errors?.['invalidName'] && popupForm.get('name')?.value">
+            Имя должно начинаться с заглавной буквы и содержать только русские буквы и пробелы
+          </div>
+        </div>
+
+        <input class="input" type="tel" placeholder="Ваш номер телефона"
+               mask="+7 (000) 000-00-00" formControlName="phone">
+
+        <button class="button" (click)="sendForm()" [disabled]="popupForm.invalid">
+          {{formPopupContent.button.text}}
+        </button>
+
       </div>
     </div>
 

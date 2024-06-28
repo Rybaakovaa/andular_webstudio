@@ -5,6 +5,7 @@ import {ReviewType} from "../../../types/review.type";
 import {ServiceType} from "../../../types/service.type";
 import {OwlOptions} from "ngx-owl-carousel-o";
 import {FormPopupService} from "../../shared/services/form-popup.service";
+import {PopupFormType} from "../../../types/popup-form.type";
 
 @Component({
   selector: 'app-main',
@@ -140,8 +141,33 @@ export class MainComponent implements OnInit {
   }
 
   callForm(title: string) {
+    let services: string[] = [];
+    this.services.forEach(item => {
+      services.push(item.title);
+    });
+
     this.formPopupService.show();
-    this.formPopupService.setContent(title);
+    this.formPopupService.setContent({
+      title: 'Заявка на услугу',
+      comboBox: {
+        items: services,
+        active: title,
+      },
+      // inputs: [
+      //   {
+      //     type: 'name',
+      //     placeholder: 'Ваше имя'
+      //   },
+      //   {
+      //     type: 'name',
+      //     placeholder: 'Ваш номер телефона'
+      //   },
+      // ],
+      button: {
+        text: 'Оставить заявку',
+        url: ''
+      }
+    });
   }
 
 }
