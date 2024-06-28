@@ -19,30 +19,32 @@ import { PolicyPageComponent } from './views/policy-page/policy-page.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LayoutComponent,
-    HeaderComponent,
-    FooterComponent,
-    MainComponent,
-    PolicyPageComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    SharedModule,
-    MatSnackBarModule,
-    MatMenuModule,
-    SharedModule,
-    CarouselModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    NoopAnimationsModule
-  ],
-  providers: [
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LayoutComponent,
+        HeaderComponent,
+        FooterComponent,
+        MainComponent,
+        PolicyPageComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        SharedModule,
+        MatSnackBarModule,
+        MatMenuModule,
+        CarouselModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        NoopAnimationsModule
+    ],
+    providers: [
+        {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    ],
+    exports: [
+        FooterComponent
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   api: "http://localhost:3000/api/",
-  imagePath: "assets/images/tipaFromBackend/"
-
+  imagePath: "assets/images/tipaFromBackend/",
+  numberPhone: "74993431334",
 };
 
 /*

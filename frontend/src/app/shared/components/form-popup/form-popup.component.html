@@ -1,0 +1,26 @@
+<div class="form-popup" *ngIf="isShowed">
+  <div class="form-popup-container">
+    <a class="close" (click)="closePopup()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="1.93562" y1="2.64999" x2="13.9564" y2="14.6708" stroke="#BEBEBE" stroke-linecap="round"/>
+        <line x1="13.9236" y1="2.62978" x2="1.90277" y2="14.6506" stroke="#BEBEBE" stroke-linecap="round"/>
+      </svg>
+    </a>
+
+    <div class="form-popup-content" *ngIf="!isSend">
+      <div class="popup-title lora-38-blue">Закажите бесплатную консультацию!</div>
+      <div class="form">
+        <input class="input" type="text" placeholder="Ваше имя">
+        <input class="input" type="tel" placeholder="Ваш номер телефона">
+        <button class="button" (click)="sendForm()">Оставить заявку</button>
+      </div>
+    </div>
+
+    <div class="form-popup-success" *ngIf="isSend">
+      <div class="popup-title lora-38-blue">Спасибо за вашу заявку!</div>
+      <div>Мы свяжемся с вами при первой же возможности.</div>
+      <button class="button" (click)="closePopup()">Окей</button>
+    </div>
+  </div>
+</div>
+

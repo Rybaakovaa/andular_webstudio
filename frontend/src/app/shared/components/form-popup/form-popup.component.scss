@@ -1,0 +1,69 @@
+@import "../../../../assets/styles/variables";
+
+
+.form-popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(74, 74, 74, .3);
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .form-popup-container {
+    border: 2px solid $color-blue;
+    border-radius: 10px;
+    width: 727px;
+    height: 489px;
+    background: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 130%;
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+    }
+
+    .popup-title {
+      width: 443px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-popup-content .form {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 422px;
+
+      .button {
+        margin-top: 15px;
+        width: 100%;
+      }
+    }
+
+    .form-popup-success {
+      text-align: center;
+      color: $color-dark-purple;
+
+      .button {
+        margin-top: 40px;
+        width: 73px;
+      }
+    }
+  }
+}

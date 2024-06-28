@@ -25,7 +25,7 @@
         <div class="footer-row-item-title">Телефон</div>
         <div class="footer-row-item-body">
           <a class="footer-phone" href="tel:+{{numberPhone}}">{{numberPhone | preparePhone}}</a>
-          <button class="button ">Перезвоните мне</button>
+          <button class="button" (click)="callForm()">Перезвоните мне</button>
         </div>
       </div>
       <div class="footer-row-item">

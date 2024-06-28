@@ -37,7 +37,7 @@
         <div class="service-description">{{service.description}}</div>
         <div class="service-info">
           <div class="service-info-price">От {{service.price}}₽</div>
-          <button class="button">Подробнее</button>
+          <button class="button" (click)="callForm(service.title)">Подробнее</button>
         </div>
       </div>
     </div>

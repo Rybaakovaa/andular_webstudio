@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
+import {FormPopupService} from "../../services/form-popup.service";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-footer',
@@ -7,11 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  numberPhone: string = "74993431334";
+  numberPhone: string = environment.numberPhone;
 
-  constructor() { }
+  constructor(private formPopupService: FormPopupService) { }
 
   ngOnInit(): void {
+  }
+
+
+  callForm() {
+    this.formPopupService.show();
+    this.formPopupService.setContent('callForm');
   }
 
 }

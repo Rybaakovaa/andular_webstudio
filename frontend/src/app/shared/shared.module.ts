@@ -7,6 +7,7 @@ import {RouterModule} from "@angular/router";
 import {BannerComponent} from './components/banner/banner.component';
 import {TruncatePipe} from './pipes/truncate.pipe';
 import { DateConvertPipe } from './pipes/date-convert.pipe';
+import { FormPopupComponent } from './components/form-popup/form-popup.component';
 
 
 @NgModule({
@@ -16,18 +17,20 @@ import { DateConvertPipe } from './pipes/date-convert.pipe';
     BannerComponent,
     TruncatePipe,
     DateConvertPipe,
+    FormPopupComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     PreparePhonePipe,
     ArticleComponent,
     BannerComponent,
     TruncatePipe,
-    DateConvertPipe
+    DateConvertPipe,
+    FormPopupComponent,
   ]
 })
 export class SharedModule {

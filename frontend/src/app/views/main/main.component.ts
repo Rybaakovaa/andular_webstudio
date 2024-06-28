@@ -1,9 +1,10 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {ArticleType} from "../../../types/article.type";
 import {ArticleService} from "../../shared/services/article.service";
 import {ReviewType} from "../../../types/review.type";
 import {ServiceType} from "../../../types/service.type";
 import {OwlOptions} from "ngx-owl-carousel-o";
+import {FormPopupService} from "../../shared/services/form-popup.service";
 
 @Component({
   selector: 'app-main',
@@ -126,7 +127,8 @@ export class MainComponent implements OnInit {
 
   popularArticles: ArticleType[] = [];
 
-  constructor(private articleService: ArticleService) {
+  constructor(private articleService: ArticleService,
+              private formPopupService: FormPopupService) {
   }
 
   ngOnInit(): void {
@@ -137,6 +139,9 @@ export class MainComponent implements OnInit {
     });
   }
 
-
+  callForm(title: string) {
+    this.formPopupService.show();
+    this.formPopupService.setContent(title);
+  }
 
 }

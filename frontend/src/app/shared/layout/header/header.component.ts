@@ -3,6 +3,7 @@ import {AuthService} from "../../../core/auth/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {DefaultResponseType} from "../../../../types/default-response.type";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ import {DefaultResponseType} from "../../../../types/default-response.type";
 })
 export class HeaderComponent implements OnInit {
 
-  numberPhone: string = "74993431334";
+  numberPhone: string = environment.numberPhone;
   isLogged: boolean = false;
   userName: string | null = null;
 
