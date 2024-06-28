@@ -15,7 +15,7 @@ import { DateConvertPipe } from './pipes/date-convert.pipe';
     ArticleComponent,
     BannerComponent,
     TruncatePipe,
-    DateConvertPipe
+    DateConvertPipe,
   ],
   imports: [
     CommonModule,
