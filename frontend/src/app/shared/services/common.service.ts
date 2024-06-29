@@ -24,6 +24,12 @@ export class CommonService {
     return this.http.get<CategoryType[]>(environment.api + 'categories');
   }
 
+  getService(name: string, phone: string, service: string, type: string): Observable<DefaultResponseType> {
+    return this.http.post<DefaultResponseType>(environment.api + 'requests', {
+      name: name, phone: phone, service: service, type: type
+    });
+  }
+
 
 
 

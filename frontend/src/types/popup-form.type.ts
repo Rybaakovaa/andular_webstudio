@@ -10,6 +10,6 @@ export type PopupFormType = {
   }[],
   button: {
     text: string,
-    url?: string
+    type: string
   }
 }

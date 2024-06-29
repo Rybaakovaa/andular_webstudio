@@ -165,7 +165,7 @@ export class MainComponent implements OnInit {
       // ],
       button: {
         text: 'Оставить заявку',
-        url: ''
+        type: 'order'
       }
     });
   }

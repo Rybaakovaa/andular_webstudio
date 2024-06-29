@@ -35,12 +35,20 @@
           </div>
         </div>
 
-        <input class="input" type="tel" placeholder="Ваш номер телефона"
-               mask="+7 (000) 000-00-00" formControlName="phone">
+        <!--               value="+7 (__) ___-__-__" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"-->
+        <input class="input" type="tel" placeholder="Ваш номер телефона" formControlName="phone"
+               [ngStyle]="{'border-color': popupForm.get('phone')?.invalid &&
+               (popupForm.get('phone')?.dirty || popupForm.get('phone')?.touched) ? 'red' : ''}">
+        <div *ngIf="popupForm.get('phone')?.invalid && (popupForm.get('phone')?.dirty || popupForm.get('phone')?.touched)">
+          <div class="text-danger" *ngIf="popupForm.get('phone')?.errors?.['required']  && !popupForm.get('phone')?.value">
+            Телефон обязателен для заполнения
+          </div>
+        </div>
 
         <button class="button" (click)="sendForm()" [disabled]="popupForm.invalid">
           {{formPopupContent.button.text}}
         </button>
+        <div class="text-danger" *ngIf="isError">Произошла ошибка при отправке формы,<br>попробуйте еще раз</div>
 
       </div>
     </div>

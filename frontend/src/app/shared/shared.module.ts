@@ -10,7 +10,6 @@ import { DateConvertPipe } from './pipes/date-convert.pipe';
 import { FormPopupComponent } from './components/form-popup/form-popup.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
-
 @NgModule({
   declarations: [
     PreparePhonePipe,

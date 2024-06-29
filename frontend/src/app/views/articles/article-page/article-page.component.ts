@@ -8,6 +8,7 @@ import {AuthService} from "../../../core/auth/auth.service";
 import {CommentsService} from "../../../shared/services/comments.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CommentsType} from "../../../../types/comments.type";
+import {CommentType} from "../../../../types/comment.type";
 
 @Component({
   selector: 'app-article-page',
@@ -61,11 +62,33 @@ export class ArticlePageComponent implements OnInit {
             // ...
             throw new Error((data as DefaultResponseType).message);
           }
-          this.curArticles = data as ArticleType;
-          console.log(this.curArticles)
+          this.curArticles = (data as ArticleType);
+          this.getActionsUserRequest();
+          // this.curArticles.comments?.forEach(item => {
+          //   item.angryStatus = false;
+          // });
+          // console.log(this.curArticles)
         });
     }
   }
+
+  getActionsUserRequest() {
+    this.commentsService.userActionCommentsByArticle(this.curArticles.id)
+      .subscribe((data: { comment: string, action: string }[]) => {
+        if (data.length > 0) {
+          const action = data;
+          this.curArticles.comments?.map(item => {
+            const comment = action.find(id => id.comment === item.id);
+            if (comment) {
+              item.likeStatus = (comment.action === "like");
+              item.dislikeStatus = (comment.action === "dislike");
+            }
+            return item;
+          })
+        }
+      });
+  }
+
 
   getRelatedArticlesRequest() {
     if (this.urlParam) {
@@ -96,16 +119,84 @@ export class ArticlePageComponent implements OnInit {
     }
   }
 
+  // loadMoreCommentsRequest() {
+  //   this.commentsService.getComments(this.curArticles.id)
+  //     .subscribe((data: CommentsType) => {
+  //       const allComments = (data as CommentsType).comments;
+  //       if (allComments.length > 0) {
+  //         const curLen = this.curArticles.comments?.length ? this.curArticles.comments?.length : 0;
+  //         if (allComments.length - 10 > curLen) {
+  //           this.curArticles.comments = this.curArticles.comments?.concat(allComments.splice(curLen, curLen + 10));
+  //         } else {
+  //           this.curArticles.comments = this.curArticles.comments?.concat(allComments);
+  //         }
+  //       }
+  //     });
+  // }
 
   loadAllCommentsRequest() {
     this.commentsService.getComments(this.curArticles.id)
       .subscribe((data: CommentsType) => {
-          const allComments = (data as CommentsType).comments;
-          if (allComments.length > 0) {
-            this.curArticles.comments = this.curArticles.comments?.concat(allComments);
-          }
-      })
+        const allComments = (data as CommentsType).comments;
+        if (allComments.length > 0) {
+          this.curArticles.comments = this.curArticles.comments?.concat(allComments);
+        }
+      });
+  }
 
+
+  angryRequest(comment: CommentType) {
+    // должен ли быть запрос на сервер?
+    if (comment.angryStatus) {
+      this._snackBar.open('Жалоба уже отправлена')
+      return;
+    }
+
+    this.curArticles.comments = this.curArticles.comments?.map(item => {
+      if (item.id === comment.id) {
+        item.angryStatus = true;
+        this._snackBar.open('Жалоба отправлена')
+      }
+      return item;
+    })
+  }
+
+  dislikeRequest(comment: CommentType) {
+    if (this.actionRequest(comment, "dislike")) {
+      comment.dislikesCount += comment.dislikeStatus ? -1 : 1;
+      comment.dislikeStatus = !comment.dislikeStatus;
+      if (comment.dislikeStatus) this._snackBar.open("Ваш голос учтен");
+
+      if (comment.likeStatus) {
+        comment.likeStatus = false;
+        comment.likesCount -= 1;
+      }
+    }
+  }
+
+  likeRequest(comment: CommentType) {
+    if (this.actionRequest(comment, "like")) {
+      comment.likesCount += comment.likeStatus ? -1 : 1;
+      comment.likeStatus = !comment.likeStatus;
+      if (comment.likeStatus) this._snackBar.open("Ваш голос учтен");
+
+      if (comment.dislikeStatus) {
+        comment.dislikeStatus = false;
+        comment.dislikesCount -= 1;
+      }
+    }
+  }
+
+  actionRequest(comment: CommentType, action: string): boolean {
+    let error = true;
+    this.commentsService.actionComment(comment.id, action)
+      .subscribe((data: DefaultResponseType) => {
+        if (data.error) {
+          error = false;
+          console.log(data.message);
+        }
+      });
+    return error;
   }
 
 

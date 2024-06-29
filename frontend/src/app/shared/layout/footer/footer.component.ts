@@ -33,6 +33,7 @@ export class FooterComponent implements OnInit {
       // ],
       button: {
         text: 'Заказать звонок',
+        type: 'consultation'
       }
     });
   }

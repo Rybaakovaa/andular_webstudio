@@ -23,10 +23,20 @@ export class CommentsService {
     return this.http.get<CommentsType>(environment.api + 'comments?article=' + id);
   }
 
-  actionComment(id: string, action: string): Observable<CommentsType> {
-    return this.http.post<CommentsType>(`environment.api/comments/${id}/apply-action`, {
+  actionComment(id: string, action: string): Observable<DefaultResponseType> {
+    return this.http.post<DefaultResponseType>(`${environment.api}comments/${id}/apply-action`, {
       action
     });
+  }
+
+  userActionComment(id: string, action: string): Observable<{comment: string, action: string}[]> {
+    return this.http.get<{comment: string, action: string}[]>(`${environment.api}comments/${id}/actions`);
+  }
+
+  userActionCommentsByArticle(articleId: string): Observable<{comment: string, action: string}[]> {
+    return this.http.get<{comment: string, action: string}[]>(
+      `${environment.api}comments/article-comment-actions?articleId=${articleId}`
+    );
   }
 
 }

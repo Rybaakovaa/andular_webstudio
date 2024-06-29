@@ -4,6 +4,8 @@ import {Subscription} from "rxjs";
 import {PopupFormType} from "../../../../types/popup-form.type";
 import {FormBuilder, Validators} from "@angular/forms";
 import {nameValidator} from "../../validators/name-validator";
+import {CommonService} from "../../services/common.service";
+import {DefaultResponseType} from "../../../../types/default-response.type";
 
 @Component({
   selector: 'app-form-popup',
@@ -15,6 +17,7 @@ export class FormPopupComponent implements OnInit {
   trackClick: boolean = false;
   isShowed: boolean = false;
   isSend: boolean = false;
+  isError: boolean = false;
 
   selectBodyOpen: boolean = false;
 
@@ -22,11 +25,12 @@ export class FormPopupComponent implements OnInit {
 
   popupForm = this.fb.group({
     name: ['', [Validators.required, nameValidator()]],
-    phone: ['', [Validators.email, Validators.required]],
+    phone: ['', [Validators.required]] //, Validators.pattern(/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/)]],
   })
 
 
   constructor(private formPopupService: FormPopupService,
+              private commonService: CommonService,
               private fb: FormBuilder) {
   }
 
@@ -41,15 +45,40 @@ export class FormPopupComponent implements OnInit {
 
   }
 
+
   closePopup(): void {
-    this.formPopupService.hide();
+    this.popupForm.value.name = '';
+    this.popupForm.value.phone = '';
+
     this.isSend = false;
     this.trackClick = false;
     this.selectBodyOpen = false;
+    this.isError = false;
+
+    this.formPopupService.hide();
   }
 
   sendForm() {
-    this.isSend = true;
+    if (!this.isSend) {
+      if (this.formPopupContent.button && this.popupForm.value.name && this.popupForm.value.phone) {
+        // if (this.formPopupContent.button.type === "consultation") {
+        //   this.isSend = true;
+        // }
+
+        if (this.formPopupContent.button.type === "order" && this.formPopupContent.comboBox) {
+          this.commonService.getService(this.popupForm.value.name, this.popupForm.value.phone,
+                                        this.formPopupContent.comboBox.active, this.formPopupContent.button.type)
+            .subscribe((data: DefaultResponseType) => {
+              if (data.error) {
+                this.isError = true;
+                throw new Error(data.message);
+              }
+            });
+        }
+
+        this.isSend = true;
+      }
+    }
   }
 
 
