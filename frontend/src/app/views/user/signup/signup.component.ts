@@ -33,6 +33,11 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get name() { return this.signupForm.get('name'); }
+  get email() { return this.signupForm.get('email'); }
+  get password() { return this.signupForm.get('password'); }
+
+
   signup() {
     if (this.signupForm.valid && this.signupForm.value.name && this.signupForm.value.email &&
         this.signupForm.value.password && this.signupForm.value.agree) {

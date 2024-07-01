@@ -3,28 +3,32 @@
     <div class="auth-form" [formGroup]="loginForm">
       <div class="form-title">Войти в личный кабинет</div>
       <div class="form-body">
-        <input class="input" type="text" placeholder="Электронная почта"
-               [ngStyle]="{'border-color': loginForm.get('email')?.invalid &&
-                 (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) ?
-                 'red' : ''}"
-               formControlName="email">
-        <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
-          <div class="text-danger" *ngIf="loginForm.get('email')?.errors?.['required']  && !loginForm.get('email')?.value">
+
+        <input
+          class="input"
+          type="text"
+          placeholder="Электронная почта"
+          [ngStyle]="{'border-color': email?.invalid && (email?.dirty || email?.touched) ? 'red' : ''}"
+          formControlName="email"
+        >
+        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+          <div class="text-danger" *ngIf="email?.errors?.['required']  && !email?.value">
             Заполните email
           </div>
-          <div class="text-danger" *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.value">
+          <div class="text-danger" *ngIf="email?.errors?.['email'] && email?.value">
             Email введен некорректно
           </div>
         </div>
 
-        <input class="input" type="password" placeholder="Пароль"
-               [ngStyle]="{'border-color': (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) ?
-                 'red' : ''}"
-               formControlName="password">
-        <div *ngIf="(loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
-          <div class="text-danger" *ngIf="loginForm.get('password')?.errors?.['required']">
-            Введите пароль
-          </div>
+        <input
+          class="input"
+          type="password"
+          placeholder="Пароль"
+          [ngStyle]="{'border-color':  password?.invalid && (password?.dirty || password?.touched) ? 'red' : ''}"
+          formControlName="password"
+        >
+        <div class="text-danger" *ngIf="(password?.dirty || password?.touched) && password?.errors?.['required']">
+          Введите пароль
         </div>
 
         <div class="rememberMe">

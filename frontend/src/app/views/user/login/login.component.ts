@@ -30,6 +30,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get email() { return this.loginForm.get('email'); }
+  get password() { return this.loginForm.get('password'); }
+
+
 
   login(): void {
     if (this.loginForm.valid && this.loginForm.value.email && this.loginForm.value.password) {
