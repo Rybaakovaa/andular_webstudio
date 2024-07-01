@@ -1,5 +1,5 @@
-<div class="form-popup" *ngIf="isShowed">
-<!--  <div class="form-popup" >-->
+<!--<div class="form-popup" *ngIf="isShowed">-->
+<div class="form-popup">
   <div class="form-popup-container">
     <a class="close" (click)="closePopup()">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,45 +11,65 @@
     <div class="form-popup-content" *ngIf="!isSend">
       <div class="popup-title lora-38-blue">{{formPopupContent.title}}</div>
       <div class="form" [formGroup]="popupForm">
-        <div class="select" name="select" (click)="selectHeaderClick()"
-             *ngIf="formPopupContent.comboBox && formPopupContent.comboBox.active">
-          <div class="select-header">
-            {{formPopupContent.comboBox.active}}
-          </div>
+        <div
+          class="select"
+          name="select"
+          (click)="selectHeaderClick()"
+          *ngIf="formPopupContent.comboBox && formPopupContent.comboBox.active"
+        >
+          <div class="select-header">{{formPopupContent.comboBox.active}}</div>
           <div class="select-body" *ngIf="selectBodyOpen">
-            <div class="select-item" (click)="selectItemClick(item)"
-                 [class.active]="formPopupContent.comboBox.active === item"
-                 *ngFor="let item of formPopupContent.comboBox.items">{{item}}</div>
+            <div
+              class="select-item"
+              (click)="selectItemClick(item)"
+              [class.active]="formPopupContent.comboBox.active === item"
+              *ngFor="let item of formPopupContent.comboBox.items"
+            >
+              {{item}}
+            </div>
           </div>
         </div>
 
-        <input class="input" type="text" placeholder="Ваше имя" formControlName="name"
-               [ngStyle]="{'border-color': popupForm.get('name')?.invalid &&
-               (popupForm.get('name')?.dirty || popupForm.get('name')?.touched) ? 'red' : ''}">
-        <div *ngIf="popupForm.get('name')?.invalid && (popupForm.get('name')?.dirty || popupForm.get('name')?.touched)">
-          <div class="text-danger" *ngIf="popupForm.get('name')?.errors?.['required']  && !popupForm.get('name')?.value">
+        <input
+          class="input"
+          type="text"
+          placeholder="Ваше имя"
+          formControlName="name"
+          [ngStyle]="{'border-color': name?.invalid && (name?.dirty || name?.touched) ? 'red' : ''}"
+        >
+        <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+          <div class="text-danger" *ngIf="name?.errors?.['required']  && !name?.value">
             Имя обязательно для заполнения
           </div>
-          <div class="text-danger" *ngIf="popupForm.get('name')?.errors?.['invalidName'] && popupForm.get('name')?.value">
+          <div class="text-danger" *ngIf="name?.errors?.['invalidName'] && name?.value">
             Имя должно начинаться с заглавной буквы и содержать только русские буквы и пробелы
           </div>
         </div>
 
-        <!--               value="+7 (__) ___-__-__" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"-->
-        <input class="input" type="tel" placeholder="Ваш номер телефона" formControlName="phone"
-               [ngStyle]="{'border-color': popupForm.get('phone')?.invalid &&
-               (popupForm.get('phone')?.dirty || popupForm.get('phone')?.touched) ? 'red' : ''}">
-        <div *ngIf="popupForm.get('phone')?.invalid && (popupForm.get('phone')?.dirty || popupForm.get('phone')?.touched)">
-          <div class="text-danger" *ngIf="popupForm.get('phone')?.errors?.['required']  && !popupForm.get('phone')?.value">
+        <input
+          class="input"
+          type="text"
+          prefix="+7"
+          mask="(000) 000 00 00"
+          placeholder="Ваш номер телефона"
+          formControlName="phone"
+          [ngStyle]="{'border-color': phone?.invalid && (phone?.dirty || phone?.touched) ? 'red' : ''}"
+        >
+        <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+          <div class="text-danger" *ngIf="phone?.errors?.['required']  && !phone?.value">
             Телефон обязателен для заполнения
+          </div>
+          <div class="text-danger" *ngIf="phone?.errors?.['pattern'] && phone?.value">
+            Введите номер полностью
           </div>
         </div>
 
         <button class="button" (click)="sendForm()" [disabled]="popupForm.invalid">
           {{formPopupContent.button.text}}
         </button>
-        <div class="text-danger" *ngIf="isError">Произошла ошибка при отправке формы,<br>попробуйте еще раз</div>
-
+        <div class="text-danger" *ngIf="isError">
+          Произошла ошибка при отправке формы,<br>попробуйте еще раз
+        </div>
       </div>
     </div>
 

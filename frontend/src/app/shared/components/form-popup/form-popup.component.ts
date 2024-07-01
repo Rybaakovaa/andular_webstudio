@@ -1,11 +1,10 @@
-import {Component, ElementRef, HostListener, OnInit, Renderer2} from '@angular/core';
-import {FormPopupService} from "../../services/form-popup.service";
-import {Subscription} from "rxjs";
+import {Component, Inject, OnInit} from '@angular/core';
 import {PopupFormType} from "../../../../types/popup-form.type";
 import {FormBuilder, Validators} from "@angular/forms";
 import {nameValidator} from "../../validators/name-validator";
 import {CommonService} from "../../services/common.service";
 import {DefaultResponseType} from "../../../../types/default-response.type";
+import {Dialog, DIALOG_DATA, DialogRef} from "@angular/cdk/dialog";
 
 @Component({
   selector: 'app-form-popup',
@@ -14,48 +13,33 @@ import {DefaultResponseType} from "../../../../types/default-response.type";
 })
 export class FormPopupComponent implements OnInit {
 
-  trackClick: boolean = false;
-  isShowed: boolean = false;
   isSend: boolean = false;
   isError: boolean = false;
 
   selectBodyOpen: boolean = false;
 
-  formPopupContent!: PopupFormType;
-
   popupForm = this.fb.group({
     name: ['', [Validators.required, nameValidator()]],
-    phone: ['', [Validators.required]] //, Validators.pattern(/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/)]],
-  })
+    phone: ['', [Validators.required, Validators.pattern(/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/)]],
+  });
 
 
-  constructor(private formPopupService: FormPopupService,
-              private commonService: CommonService,
-              private fb: FormBuilder) {
+  constructor(private commonService: CommonService,
+              private fb: FormBuilder,
+              @Inject(DIALOG_DATA) public formPopupContent: PopupFormType,
+              private dialog: Dialog,
+              private dialogRef: DialogRef) {
   }
 
-  ngOnInit(): void {
-    this.formPopupService.isShowed$.subscribe((isShowed: boolean) => {
-      this.isShowed = isShowed;
-    });
+  ngOnInit(): void { }
 
-    this.formPopupService.formPopupContent$.subscribe((formPopupContent: PopupFormType) => {
-      this.formPopupContent = formPopupContent;
-    });
+  get name() { return this.popupForm.get('name'); }
+  get phone() { return this.popupForm.get('phone'); }
 
-  }
 
 
   closePopup(): void {
-    this.popupForm.value.name = '';
-    this.popupForm.value.phone = '';
-
-    this.isSend = false;
-    this.trackClick = false;
-    this.selectBodyOpen = false;
-    this.isError = false;
-
-    this.formPopupService.hide();
+    this.dialogRef.close();
   }
 
   sendForm() {
@@ -80,19 +64,6 @@ export class FormPopupComponent implements OnInit {
       }
     }
   }
-
-
-  // @HostListener('document: click', ['$event'])
-  // click(event: Event) {
-  //   // первый клик - открытие самой формы его надо пропустить
-  //   if (!this.trackClick) {
-  //     this.trackClick = true;
-  //     return;
-  //   }
-  //   if (this.isShowed && this.trackClick && (event.target as HTMLElement).className.indexOf('form-popup-container') === -1) {
-  //     this.closePopup();
-  //   }
-  // }
 
 
   selectItemClick(item: string) {

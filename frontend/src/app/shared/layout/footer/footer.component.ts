@@ -1,6 +1,8 @@
 import {Component, OnInit, Output} from '@angular/core';
-import {FormPopupService} from "../../services/form-popup.service";
 import {environment} from "../../../../environments/environment";
+import {Dialog} from "@angular/cdk/dialog";
+import {FormPopupComponent} from "../../components/form-popup/form-popup.component";
+import {PopupFormType} from "../../../../types/popup-form.type";
 
 @Component({
   selector: 'app-footer',
@@ -11,31 +13,21 @@ export class FooterComponent implements OnInit {
 
   numberPhone: string = environment.numberPhone;
 
-  constructor(private formPopupService: FormPopupService) { }
+  constructor(private dialog: Dialog) { }
 
   ngOnInit(): void {
   }
 
 
   callForm() {
-    this.formPopupService.show();
-    this.formPopupService.setContent({
-      title: 'Бесплатная консультация!',
-      // inputs: [
-      //   {
-      //   type: 'name',
-      //   placeholder: 'Ваше имя'
-      // },
-      //   {
-      //   type: 'name',
-      //   placeholder: 'Ваш номер телефона'
-      // },
-      // ],
-      button: {
-        text: 'Заказать звонок',
-        type: 'consultation'
-      }
-    });
+    const data: PopupFormType = {
+        title: 'Бесплатная консультация!',
+        button: {
+          text: 'Заказать звонок',
+          type: 'consultation'
+        }
+    };
+    this.dialog.open(FormPopupComponent, {data});
   }
 
 }

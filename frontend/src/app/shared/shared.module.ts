@@ -9,6 +9,8 @@ import {TruncatePipe} from './pipes/truncate.pipe';
 import { DateConvertPipe } from './pipes/date-convert.pipe';
 import { FormPopupComponent } from './components/form-popup/form-popup.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {DialogModule} from "@angular/cdk/dialog";
+import {NgxMaskModule} from "ngx-mask";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {ReactiveFormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     HttpClientModule,
+    DialogModule,
     ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
     RouterModule,
   ],
   exports: [

@@ -146,19 +146,20 @@ export class ArticlePageComponent implements OnInit {
 
 
   angryRequest(comment: CommentType) {
-    // должен ли быть запрос на сервер?
     if (comment.angryStatus) {
       this._snackBar.open('Жалоба уже отправлена')
       return;
     }
 
-    this.curArticles.comments = this.curArticles.comments?.map(item => {
-      if (item.id === comment.id) {
-        item.angryStatus = true;
-        this._snackBar.open('Жалоба отправлена')
-      }
-      return item;
-    })
+    if (this.actionRequest(comment, "violate")) {
+      this.curArticles.comments = this.curArticles.comments?.map(item => {
+        if (item.id === comment.id) {
+          item.angryStatus = true;
+          this._snackBar.open('Жалоба отправлена')
+        }
+        return item;
+      });
+    }
   }
 
   dislikeRequest(comment: CommentType) {

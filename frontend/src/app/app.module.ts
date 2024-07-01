@@ -16,7 +16,8 @@ import {MatMenuModule} from "@angular/material/menu";
 import {AuthInterceptor} from "./core/auth/auth.interceptor";
 import {CarouselModule} from "ngx-owl-carousel-o";
 import {PolicyPageComponent} from './views/policy-page/policy-page.component';
-import {InputNumberModule} from "primeng/inputnumber";
+// import {InputNumberModule} from "primeng/inputnumber";
+// import {NgxMaskModule} from "ngx-mask";
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import {InputNumberModule} from "primeng/inputnumber";
     MatMenuModule,
     CarouselModule,
     ReactiveFormsModule,
-    InputNumberModule,
+    // InputNumberModule,
     AppRoutingModule,
     NoopAnimationsModule
   ],
