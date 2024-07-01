@@ -12,23 +12,25 @@
       <div class="popup-title lora-38-blue">{{formPopupContent.title}}</div>
       <div class="form" [formGroup]="popupForm">
         <div
-          class="select"
-          name="select"
-          (click)="selectHeaderClick()"
+          class="form-popup-content-select"
+          [matMenuTriggerFor]="menu"
           *ngIf="formPopupContent.comboBox && formPopupContent.comboBox.active"
-        >
-          <div class="select-header">{{formPopupContent.comboBox.active}}</div>
-          <div class="select-body" *ngIf="selectBodyOpen">
-            <div
-              class="select-item"
-              (click)="selectItemClick(item)"
-              [class.active]="formPopupContent.comboBox.active === item"
-              *ngFor="let item of formPopupContent.comboBox.items"
+         >
+          <button mat-button>
+            {{formPopupContent.comboBox.active}}
+          </button>
+          <mat-menu class="select-body" #menu="matMenu">
+            <button mat-menu-item
+                    class="select-item"
+                    (click)="selectItemClick(item)"
+                    [class.active]="formPopupContent.comboBox.active === item"
+                    *ngFor="let item of formPopupContent.comboBox.items"
             >
               {{item}}
-            </div>
-          </div>
+            </button>
+          </mat-menu>
         </div>
+
 
         <input
           class="input"

@@ -11,6 +11,7 @@ import { FormPopupComponent } from './components/form-popup/form-popup.component
 import {ReactiveFormsModule} from "@angular/forms";
 import {DialogModule} from "@angular/cdk/dialog";
 import {NgxMaskModule} from "ngx-mask";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {NgxMaskModule} from "ngx-mask";
     DialogModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
+    MatMenuModule,
     RouterModule,
   ],
   exports: [

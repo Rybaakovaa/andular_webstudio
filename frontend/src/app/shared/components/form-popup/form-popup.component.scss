@@ -63,35 +63,6 @@
         width: 422px;
       }
 
-      .select {
-        position: relative;
-        display: flex;
-        align-items: center;
-        color: $color-blue;
-
-        .select-body {
-          padding: 5px 0;
-          border: 2px solid $color-blue;
-          border-radius: 3px;
-          background-color: #FFFFFF;
-          width: 422px;
-          box-sizing: border-box;
-
-          position: absolute;
-          top: 53px;
-          left: -1px;
-          z-index: 2;
-
-          .select-item {
-            padding: 5px 20px;
-
-            &:hover,
-            &.active {
-              background-color: $color-light-blue;
-            }
-          }
-        }
-      }
     }
 
     .form-popup-success {

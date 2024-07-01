@@ -16,8 +16,6 @@ export class FormPopupComponent implements OnInit {
   isSend: boolean = false;
   isError: boolean = false;
 
-  selectBodyOpen: boolean = false;
-
   popupForm = this.fb.group({
     name: ['', [Validators.required, nameValidator()]],
     phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
@@ -68,11 +66,6 @@ export class FormPopupComponent implements OnInit {
   selectItemClick(item: string) {
     if (this.formPopupContent.comboBox) {
       this.formPopupContent.comboBox.active = item;
-      this.selectBodyOpen = false;
     }
-  }
-
-  selectHeaderClick() {
-    this.selectBodyOpen = !this.selectBodyOpen;
   }
 }
