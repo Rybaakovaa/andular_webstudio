@@ -1,4 +1,4 @@
-<nav class="breadcrumb">
+<nav class="breadcrumb" *ngIf="curArticles">
   <div class="container">
     <a routerLink="/articles">Блог</a>
     <div>
@@ -11,7 +11,7 @@
 </nav>
 
 
-<section class="page-introduction">
+<section class="page-introduction" *ngIf="curArticles">
   <div class="container">
     <div class="introduction-content">
       <h1 class="introduction-title lora-38-blue">{{curArticles.title}}</h1>

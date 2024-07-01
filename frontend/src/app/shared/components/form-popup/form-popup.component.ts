@@ -20,7 +20,7 @@ export class FormPopupComponent implements OnInit {
 
   popupForm = this.fb.group({
     name: ['', [Validators.required, nameValidator()]],
-    phone: ['', [Validators.required, Validators.pattern(/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/)]],
+    phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
   });
 
 
@@ -45,12 +45,12 @@ export class FormPopupComponent implements OnInit {
   sendForm() {
     if (!this.isSend) {
       if (this.formPopupContent.button && this.popupForm.value.name && this.popupForm.value.phone) {
-        // if (this.formPopupContent.button.type === "consultation") {
-        //   this.isSend = true;
-        // }
+        if (this.formPopupContent.button.type === "consultation") {
+          this.isSend = true;
+        }
 
         if (this.formPopupContent.button.type === "order" && this.formPopupContent.comboBox) {
-          this.commonService.getService(this.popupForm.value.name, this.popupForm.value.phone,
+          this.commonService.getService(this.popupForm.value.name, '+7' + this.popupForm.value.phone,
                                         this.formPopupContent.comboBox.active, this.formPopupContent.button.type)
             .subscribe((data: DefaultResponseType) => {
               if (data.error) {
@@ -58,9 +58,8 @@ export class FormPopupComponent implements OnInit {
                 throw new Error(data.message);
               }
             });
+          this.isSend = true;
         }
-
-        this.isSend = true;
       }
     }
   }
