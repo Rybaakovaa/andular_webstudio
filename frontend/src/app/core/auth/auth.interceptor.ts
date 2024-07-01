@@ -1,10 +1,11 @@
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {catchError, finalize, Observable, switchMap, throwError} from "rxjs";
+import {catchError, delay, finalize, Observable, switchMap, throwError} from "rxjs";
 import {Injectable} from "@angular/core";
 import {AuthService} from "./auth.service";
 import {DefaultResponseType} from "../../../types/default-response.type";
 import {Router} from "@angular/router";
 import {AuthResponseType} from "../../../types/auth-response.type";
+import {LoaderService} from "../../shared/services/loader.service";
 
 
 // необходимо самостоятельно добавить AuthInterceptor в app.module
@@ -13,11 +14,11 @@ import {AuthResponseType} from "../../../types/auth-response.type";
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService,
               private router: Router,
-              // private loaderService: LoaderService
+              private loaderService: LoaderService
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // this.loaderService.show();
+    this.loaderService.show();
 
     const tokens = this.authService.getTokens();
     if (tokens && tokens.accessToken) {
@@ -34,12 +35,12 @@ export class AuthInterceptor implements HttpInterceptor {
             }
             return throwError(() => error);
           }),
-          // finalize(() => this.loaderService.hide()) // скрытие лоадера
+          finalize(() => this.loaderService.hide()) // скрытие лоадера
         );
     }
     return next.handle(req)
       .pipe(
-        // finalize(() => this.loaderService.hide()) // скрытие лоадера
+        finalize(() => this.loaderService.hide()) // скрытие лоадера
       );
   }
 

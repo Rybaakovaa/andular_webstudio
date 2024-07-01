@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {DialogModule} from "@angular/cdk/dialog";
 import {NgxMaskModule} from "ngx-mask";
 import {MatMenuModule} from "@angular/material/menu";
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {MatMenuModule} from "@angular/material/menu";
     TruncatePipe,
     DateConvertPipe,
     FormPopupComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +39,7 @@ import {MatMenuModule} from "@angular/material/menu";
     BannerComponent,
     TruncatePipe,
     DateConvertPipe,
+    LoaderComponent,
     FormPopupComponent,
   ]
 })
