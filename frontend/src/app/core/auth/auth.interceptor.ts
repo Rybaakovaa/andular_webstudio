@@ -35,12 +35,12 @@ export class AuthInterceptor implements HttpInterceptor {
             }
             return throwError(() => error);
           }),
-          finalize(() => this.loaderService.hide()) // скрытие лоадера
+          // finalize(() => this.loaderService.hide()) // скрытие лоадера
         );
     }
     return next.handle(req)
       .pipe(
-        finalize(() => this.loaderService.hide()) // скрытие лоадера
+        // finalize(() => this.loaderService.hide()) // скрытие лоадера
       );
   }
 
